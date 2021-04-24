@@ -51,17 +51,17 @@ public class BoardController : MonoBehaviour
         this.SubscribeToCurrentTile();
         this.GenerateNextOptions();
 
-        this.MovePlayer(selection);
+        this.MovePlayer();
     }
 
-    void MovePlayer(Direction direction)
+    void MovePlayer()
     {
         this.gameController.updateDeepness(100);
         this.gameController.updateOxygen(-10);
 
         this
             .player
-            .move(direction)
+            .move(this.currentTile.transform.position)
             .OnComplete(() => {
                 this.currentTile.Flip();
             });
