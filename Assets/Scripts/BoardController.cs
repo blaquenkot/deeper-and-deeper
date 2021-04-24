@@ -21,6 +21,7 @@ public class BoardController : MonoBehaviour
         this.tilesGenerator = GetComponent<TilesGenerator>();
 
         this.GenerateNextOptions();
+        this.GenerateNextOptions();
         this.SubscribeToCurrentOptions();
     }
 
@@ -89,8 +90,6 @@ public class BoardController : MonoBehaviour
         var newTileRotation = Quaternion.Euler(0, 0, 180);
 
         var nextTilesPrefabs = this.tilesGenerator.Next();
-
-        Debug.Log(nextTilesPrefabs[0]);
 
         currentOptions = (
             Instantiate(
