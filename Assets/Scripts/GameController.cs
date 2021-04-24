@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
     public void updateCoins(int dCoins)
     {
         this.coins += dCoins;
-        this.gameUIController.updateCoins(this.deepness);
+        this.gameUIController.updateCoins(this.coins);
     }
 
     private void playerDied()

@@ -25,12 +25,12 @@ public class CaveUICanvasController : MonoBehaviour
         {
             this.chestImage.gameObject.SetActive(true);
             this.titleText.text = "You found a chest!";
-            // this.gameController.updateMoney(-5);
-        } 
+            this.gameController.updateCoins(5);
+        }
         else if (random >= 0.2)
         {
             this.titleText.text = "You found nothing";
-        } 
+        }
         else
         {
             // enemy?
