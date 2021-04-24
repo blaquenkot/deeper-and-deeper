@@ -1,9 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
+using System.Linq;
 
 public class BoardController : MonoBehaviour
 {
-    public GameController gameController;    
+    public GameController gameController;
     public GameObject tilePrefab;
     public TileController currentTile;
     public (TileController, TileController, TileController) currentOptions;
@@ -47,6 +48,7 @@ public class BoardController : MonoBehaviour
         };
 
         this.UnsubscribeFromCurrentTile();
+        this.ShiftAndDiscardOptions(nextTile);
         this.currentTile = nextTile;
         this.SubscribeToCurrentTile();
         this.GenerateNextOptions();
@@ -69,9 +71,11 @@ public class BoardController : MonoBehaviour
 
     void GenerateNextOptions()
     {
-        var centerTilePosition = currentTile.transform.position;
-        var tileWidth = currentTile.transform.localScale.x;
-        var tileHeight = currentTile.transform.localScale.z;
+        var centerTilePosition = this.currentTile.transform.position;
+        centerTilePosition.x = 0;
+
+        var tileWidth = this.currentTile.transform.localScale.x;
+        var tileHeight = this.currentTile.transform.localScale.z;
         var newTileRotation = Quaternion.Euler(0, 0, 180);
 
         currentOptions = (
@@ -91,5 +95,32 @@ public class BoardController : MonoBehaviour
                 newTileRotation
             ).GetComponent<TileController>()
         );
+    }
+
+    void ShiftAndDiscardOptions(TileController selectedTile)
+    {
+        var removeToTheLeft = true;
+
+        var options = new TileController[]
+        {
+            currentOptions.Item1,
+            currentOptions.Item2,
+            currentOptions.Item3
+        };
+
+        foreach (TileController tile in options)
+        {
+            if (tile == selectedTile)
+            {
+                removeToTheLeft = false;
+                tile.transform.DOMoveX(0, 0.5f);
+            } else {
+                tile.transform.DOLocalMoveX(
+                    removeToTheLeft ? -15 : 15, 1
+                ).OnComplete(() => {
+                    Destroy(tile.gameObject);
+                });
+            }
+        }
     }
 }

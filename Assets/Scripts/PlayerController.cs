@@ -17,9 +17,6 @@ public class PlayerController : MonoBehaviour
 
     public Tween move(Vector3 destination)
     {
-        return DOTween.Sequence()
-            .Append(this.transform.DOMoveZ(destination.z, 0.3f))
-            .Append(this.transform.DOMoveX(destination.x, 0.3f))
-            .Play();
+        return this.transform.DOMoveZ(destination.z, 0.3f);
     }
 }
