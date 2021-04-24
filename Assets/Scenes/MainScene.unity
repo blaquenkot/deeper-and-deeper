@@ -992,8 +992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1272719488}
-  caveTilePrefab: {fileID: 4179794704530602525, guid: 9fb94049f36724a21a5f217b5471d289, type: 3}
-  chestTilePrefab: {fileID: 7020607392311030370, guid: 14546d2254c9b4496bc12b0fda00ca7c, type: 3}
   currentTile: {fileID: 691661547}
   player: {fileID: 1428247771}
   background: {fileID: 633987594}
@@ -1011,6 +1009,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveTilePrefab: {fileID: 4179794704530602525, guid: 9fb94049f36724a21a5f217b5471d289, type: 3}
   chestTilePrefab: {fileID: 7020607392311030370, guid: 14546d2254c9b4496bc12b0fda00ca7c, type: 3}
+  enemySharkTilePrefab: {fileID: 4179794704530602525, guid: 6f775bcb294cd44f5a6e7c81b039b6b9, type: 3}
+  enemyAnguilaTilePrefab: {fileID: 4179794704530602525, guid: 115bd947514d24eecb04e011b147321d, type: 3}
+  enemyPiranhaTilePrefab: {fileID: 4179794704530602525, guid: 0cdb06448ad7941e4b46b212c2dbe648, type: 3}
 --- !u!1001 &912720130642478424
 PrefabInstance:
   m_ObjectHideFlags: 0

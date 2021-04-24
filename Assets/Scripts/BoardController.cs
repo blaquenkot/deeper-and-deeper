@@ -1,12 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
-using System.Linq;
 
 public class BoardController : MonoBehaviour
 {
     public GameController gameController;
-    public GameObject caveTilePrefab;
-    public GameObject chestTilePrefab;
     public TileController currentTile;
     public (TileController, TileController, TileController) currentOptions;
 
