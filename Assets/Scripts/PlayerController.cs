@@ -6,31 +6,31 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void move(ArrowDirection direction) 
+    public void move(Direction direction)
     {
         var z = this.transform.position.z - 2.5f;
         var x = this.transform.position.x;
-        switch (direction) 
+        switch (direction)
         {
-            case ArrowDirection.Left:
+            case Direction.Left:
             {
                 x -= 3.5f;
                 break;
             }
-            case ArrowDirection.Central:
+            case Direction.Central:
             {
                 break;
             }
-            case ArrowDirection.Right:
+            case Direction.Right:
             {
                 x += 3.5f;
                 break;

@@ -1,20 +1,13 @@
 using System;
 using UnityEngine;
 
-public enum ArrowDirection
-{
-    Left,
-    Central,
-    Right
-}
-
 public class ArrowController : MonoBehaviour
 {
-    public ArrowDirection direction;
-    public event Action<ArrowDirection> onClick;
-    
+    public Direction direction;
+    public event Action<Direction> onClick;
+
     void OnMouseDown()
     {
-        onClick(this.direction);
+        this.onClick(this.direction);
     }
 }
