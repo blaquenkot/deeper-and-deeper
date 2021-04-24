@@ -16,8 +16,8 @@ public class BoardController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SubscribeToCurrentTile();
-        GenerateNextOptions();
+        this.GenerateNextOptions();
+        this.SubscribeToCurrentOptions();
     }
 
     // Update is called once per frame
@@ -25,35 +25,31 @@ public class BoardController : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            ChooseTile(Direction.Central);
+            ChooseTile(this.currentOptions.Item2);
         }
     }
 
-    void UnsubscribeFromCurrentTile()
+    void UnsubscribeFromCurrentOptions()
     {
-        this.currentTile.onMove -= this.ChooseTile;
+        this.currentOptions.Item1.onClick -= this.ChooseTile;
+        this.currentOptions.Item2.onClick -= this.ChooseTile;
+        this.currentOptions.Item3.onClick -= this.ChooseTile;
     }
 
-    void SubscribeToCurrentTile()
+    void SubscribeToCurrentOptions()
     {
-        this.currentTile.onMove += this.ChooseTile;
+        this.currentOptions.Item1.onClick += this.ChooseTile;
+        this.currentOptions.Item2.onClick += this.ChooseTile;
+        this.currentOptions.Item3.onClick += this.ChooseTile;
     }
 
-    void ChooseTile(Direction selection)
+    void ChooseTile(TileController selection)
     {
-        var nextTile = selection switch
-        {
-            Direction.Left => currentOptions.Item1,
-            Direction.Central => currentOptions.Item2,
-            Direction.Right => currentOptions.Item3,
-            _ => throw new System.ArgumentOutOfRangeException(nameof(selection))
-        };
-
-        this.UnsubscribeFromCurrentTile();
-        this.ShiftAndDiscardOptions(nextTile);
-        this.currentTile = nextTile;
-        this.SubscribeToCurrentTile();
+        this.UnsubscribeFromCurrentOptions();
+        this.ShiftAndDiscardOptions(selection);
+        this.currentTile = selection;
         this.GenerateNextOptions();
+        this.SubscribeToCurrentOptions();
 
         this.MovePlayer();
     }
@@ -63,12 +59,14 @@ public class BoardController : MonoBehaviour
         this.gameController.updateDeepness(100);
         this.gameController.updateOxygen(-10);
 
-        this
-            .player
-            .move(this.currentTile.transform.position)
+        this.currentTile
+            .Flip()
             .OnComplete(() => {
-                this.currentTile.Flip();
-                this.moveBackground();
+                this.player
+                    .move(this.currentTile.transform.position)
+                    .OnComplete(() => { 
+                        this.moveBackground(); 
+                    });
             });
     }
 

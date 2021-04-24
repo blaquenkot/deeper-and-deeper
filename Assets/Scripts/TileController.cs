@@ -6,19 +6,13 @@ public class TileController : MonoBehaviour
 {
     public Texture FrontTexture;
     public MeshRenderer FrontPlaneRenderer;
-    public event Action<Direction> onMove;
+    public event Action<TileController> onClick;
 
     void Start()
     {
         if (this.FrontTexture != null)
         {
             this.FrontPlaneRenderer.material.mainTexture = this.FrontTexture;
-        }
-
-        var arrows = GetComponentsInChildren<ArrowController>();
-        foreach (ArrowController arrow in arrows)
-        {
-            arrow.onClick += this.onArrowClicked;
         }
     }
 
@@ -28,15 +22,15 @@ public class TileController : MonoBehaviour
 
     }
 
-    public void Flip()
+    void OnMouseDown()
     {
-        this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
+        if (this.onClick != null) {
+            this.onClick(this);
+        }
     }
 
-    private void onArrowClicked(Direction direction)
+    public Tween Flip()
     {
-        if (this.onMove != null) {
-            this.onMove(direction);
-        }
+        return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
     }
 }

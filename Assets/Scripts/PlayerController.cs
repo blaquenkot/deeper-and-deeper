@@ -17,6 +17,6 @@ public class PlayerController : MonoBehaviour
 
     public Tween move(Vector3 destination)
     {
-        return this.transform.DOMoveZ(destination.z, 0.3f);
+        return this.transform.DOMoveZ(destination.z - 0.75f, 0.3f);
     }
 }
