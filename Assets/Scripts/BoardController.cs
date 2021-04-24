@@ -13,9 +13,13 @@ public class BoardController : MonoBehaviour
     public PlayerController player;
     public GameObject background;
 
+    private TilesGenerator tilesGenerator;
+
     // Start is called before the first frame update
     void Start()
     {
+        this.tilesGenerator = GetComponent<TilesGenerator>();
+
         this.GenerateNextOptions();
         this.SubscribeToCurrentOptions();
     }
@@ -64,8 +68,8 @@ public class BoardController : MonoBehaviour
             .OnComplete(() => {
                 this.player
                     .move(this.currentTile.transform.position)
-                    .OnComplete(() => { 
-                        this.moveBackground(); 
+                    .OnComplete(() => {
+                        this.moveBackground();
                     });
             });
     }
@@ -84,19 +88,23 @@ public class BoardController : MonoBehaviour
         var tileHeight = this.currentTile.transform.localScale.z;
         var newTileRotation = Quaternion.Euler(0, 0, 180);
 
+        var nextTilesPrefabs = this.tilesGenerator.Next();
+
+        Debug.Log(nextTilesPrefabs[0]);
+
         currentOptions = (
             Instantiate(
-                chestTilePrefab,
+                nextTilesPrefabs[0],
                 centerTilePosition + new Vector3(-tileWidth - 0.15f, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>(),
             Instantiate(
-                caveTilePrefab,
+                nextTilesPrefabs[1],
                 centerTilePosition + new Vector3(0, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>(),
             Instantiate(
-                chestTilePrefab,
+                nextTilesPrefabs[2],
                 centerTilePosition + new Vector3(tileWidth + 0.15f, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>()

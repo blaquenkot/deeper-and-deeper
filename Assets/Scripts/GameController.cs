@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour
 {
     public GameUIController gameUIController;
 
-    public Light light;
+    public Light gameLight;
 
     private int oxygen = 100;
     private int deepness = 0;
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     {
         this.deepness += dDeepness;
         this.gameUIController.updateDeepness(this.deepness);
-        this.light.intensity *= 0.9f;
+        this.gameLight.intensity *= 0.9f;
     }
 
     private void playerDied()

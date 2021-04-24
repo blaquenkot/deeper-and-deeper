@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameUIController: {fileID: 4824343940107326658}
-  light: {fileID: 705507994}
+  gameLight: {fileID: 0}
 --- !u!4 &1272719489
 Transform:
   m_ObjectHideFlags: 0
@@ -705,6 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857321775}
   - component: {fileID: 1857321776}
+  - component: {fileID: 1857321777}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -745,6 +746,20 @@ MonoBehaviour:
   currentTile: {fileID: 691661547}
   player: {fileID: 1428247771}
   background: {fileID: 633987594}
+--- !u!114 &1857321777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857321774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef87900f4490a0741bab1f21e74ee8b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caveTilePrefab: {fileID: 4179794704530602525, guid: 9fb94049f36724a21a5f217b5471d289, type: 3}
+  chestTilePrefab: {fileID: 7020607392311030370, guid: 14546d2254c9b4496bc12b0fda00ca7c, type: 3}
 --- !u!1001 &912720130642478424
 PrefabInstance:
   m_ObjectHideFlags: 0
