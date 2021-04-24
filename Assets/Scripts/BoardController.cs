@@ -62,9 +62,10 @@ public class BoardController : MonoBehaviour
 
             foreach(ITile tile in selection.GetComponents<ITile>())
             {
-                tile.tileActivated(this);
-                this.tileActivated = true;
-                tile.onTileDeactivated += this.onTileDeactivated;
+                if (tile.tileActivated(this)) {
+                    this.tileActivated = true;
+                    tile.onTileDeactivated += this.onTileDeactivated;
+                }
             }
         }
     }
