@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BoardController : MonoBehaviour
 {
+    public GameController gameController;    
     public GameObject tilePrefab;
     public TileController currentTile;
     public (TileController, TileController, TileController) currentOptions;
@@ -55,6 +56,9 @@ public class BoardController : MonoBehaviour
 
     void MovePlayer(Direction direction)
     {
+        this.gameController.updateDeepness(100);
+        this.gameController.updateOxygen(-10);
+
         this
             .player
             .move(direction)
