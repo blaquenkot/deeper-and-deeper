@@ -256,6 +256,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &633987594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3306418516953309951, guid: c08830a808069463dbdee375a6cc7d50, type: 3}
+  m_PrefabInstance: {fileID: 4684888029144704192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &691661547 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6078648128009813608, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
@@ -491,7 +496,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.023529414, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -737,6 +742,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
   currentTile: {fileID: 691661547}
   player: {fileID: 1428247771}
+  background: {fileID: 633987594}
 --- !u!1001 &912720130642478424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -750,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7191269593510360846, guid: 6fbe318aa5bee4307955310b3d2e0910, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7191269593510360846, guid: 6fbe318aa5bee4307955310b3d2e0910, type: 3}
       propertyPath: m_LocalPosition.x
@@ -812,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8313650572253237586, guid: c08830a808069463dbdee375a6cc7d50, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8313650572253237586, guid: c08830a808069463dbdee375a6cc7d50, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,6 +9,7 @@ public class BoardController : MonoBehaviour
     public (TileController, TileController, TileController) currentOptions;
 
     public PlayerController player;
+    public GameObject background;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,13 @@ public class BoardController : MonoBehaviour
             .move(this.currentTile.transform.position)
             .OnComplete(() => {
                 this.currentTile.Flip();
+                this.moveBackground();
             });
+    }
+
+    void moveBackground()
+    {
+        this.background.transform.position = new Vector3(this.player.transform.position.x, this.background.transform.position.y, this.player.transform.position.z);
     }
 
     void GenerateNextOptions()
