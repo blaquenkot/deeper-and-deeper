@@ -739,7 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 1272719488}
-  tilePrefab: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+  caveTilePrefab: {fileID: 4179794704530602525, guid: 9fb94049f36724a21a5f217b5471d289, type: 3}
+  chestTilePrefab: {fileID: 7020607392311030370, guid: 14546d2254c9b4496bc12b0fda00ca7c, type: 3}
   currentTile: {fileID: 691661547}
   player: {fileID: 1428247771}
   background: {fileID: 633987594}

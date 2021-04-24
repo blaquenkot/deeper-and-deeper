@@ -5,7 +5,8 @@ using System.Linq;
 public class BoardController : MonoBehaviour
 {
     public GameController gameController;
-    public GameObject tilePrefab;
+    public GameObject caveTilePrefab;
+    public GameObject chestTilePrefab;
     public TileController currentTile;
     public (TileController, TileController, TileController) currentOptions;
 
@@ -87,17 +88,17 @@ public class BoardController : MonoBehaviour
 
         currentOptions = (
             Instantiate(
-                tilePrefab,
+                chestTilePrefab,
                 centerTilePosition + new Vector3(-tileWidth - 0.15f, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>(),
             Instantiate(
-                tilePrefab,
+                caveTilePrefab,
                 centerTilePosition + new Vector3(0, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>(),
             Instantiate(
-                tilePrefab,
+                chestTilePrefab,
                 centerTilePosition + new Vector3(tileWidth + 0.15f, 0, -tileHeight - 0.15f),
                 newTileRotation
             ).GetComponent<TileController>()

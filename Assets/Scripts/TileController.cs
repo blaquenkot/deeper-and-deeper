@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour
 {
+    public Texture FrontTexture;
+    public MeshRenderer FrontPlaneRenderer;
     public event Action<Direction> onMove;
 
     void Start()
     {
+        if (this.FrontTexture != null)
+        {
+            this.FrontPlaneRenderer.material.mainTexture = this.FrontTexture;
+        }
+
         var arrows = GetComponentsInChildren<ArrowController>();
         foreach (ArrowController arrow in arrows)
         {
