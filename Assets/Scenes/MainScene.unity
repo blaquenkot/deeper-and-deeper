@@ -863,6 +863,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5172021454526365017, guid: 0964299140f6d4bee91440635143dec8, type: 3}
+      propertyPath: coinsText
+      value: 
+      objectReference: {fileID: 917541837}
     - target: {fileID: 7409085550650006207, guid: 0964299140f6d4bee91440635143dec8, type: 3}
       propertyPath: m_Name
       value: GameUICanvas
