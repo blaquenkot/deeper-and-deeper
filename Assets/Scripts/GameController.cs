@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
         this.gameUIController.updateDeepness(this.deepness);
     }
 
-    public void updateOxygen(int dOxygen) 
+    public void updateOxygen(int dOxygen)
     {
         this.oxygen += dOxygen;
         this.gameUIController.updateOxygen(this.oxygen);
@@ -32,6 +32,6 @@ public class GameController : MonoBehaviour
 
     private void playerDied()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
