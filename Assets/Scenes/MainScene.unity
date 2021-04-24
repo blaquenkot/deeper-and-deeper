@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameUIController: {fileID: 4824343940107326658}
-  gameLight: {fileID: 0}
+  gameLight: {fileID: 705507994}
 --- !u!4 &1272719489
 Transform:
   m_ObjectHideFlags: 0
