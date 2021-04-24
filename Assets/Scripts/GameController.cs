@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
     private int oxygen = 100;
     private int deepness = 0;
 
+    private int coins = 0;
+
     void Start()
     {
         this.gameUIController.updateOxygen(this.oxygen);
@@ -32,6 +34,12 @@ public class GameController : MonoBehaviour
         this.deepness += dDeepness;
         this.gameUIController.updateDeepness(this.deepness);
         this.gameLight.intensity *= 0.9f;
+    }
+
+    public void updateCoins(int dCoins)
+    {
+        this.coins += dCoins;
+        this.gameUIController.updateCoins(this.deepness);
     }
 
     private void playerDied()
