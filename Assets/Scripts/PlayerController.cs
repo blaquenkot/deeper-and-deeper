@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void move(Direction direction)
+    public Tween move(Direction direction)
     {
         var z = this.transform.position.z - 2.5f;
         var x = this.transform.position.x;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        DOTween.Sequence()
+        return DOTween.Sequence()
             .Append(this.transform.DOMoveZ(z, 0.5f))
             .Append(this.transform.DOMoveX(x, 0.5f))
             .Play();

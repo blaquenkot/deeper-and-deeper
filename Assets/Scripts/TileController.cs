@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class TileController : MonoBehaviour
@@ -18,6 +19,11 @@ public class TileController : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Flip()
+    {
+        this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
     }
 
     private void onArrowClicked(Direction direction)

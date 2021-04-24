@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class BoardController : MonoBehaviour
@@ -54,7 +55,12 @@ public class BoardController : MonoBehaviour
 
     void MovePlayer(Direction direction)
     {
-        this.player.move(direction);
+        this
+            .player
+            .move(direction)
+            .OnComplete(() => {
+                this.currentTile.Flip();
+            });
     }
 
     void GenerateNextOptions()
