@@ -14,13 +14,13 @@ public class BoardController : MonoBehaviour
     public GameObject background;
 
     private TilesGenerator tilesGenerator;
+    private bool tileActivated = false;
 
     // Start is called before the first frame update
     void Start()
     {
         this.tilesGenerator = GetComponent<TilesGenerator>();
 
-        this.GenerateNextOptions();
         this.GenerateNextOptions();
         this.SubscribeToCurrentOptions();
     }
@@ -50,13 +50,23 @@ public class BoardController : MonoBehaviour
 
     void ChooseTile(TileController selection)
     {
-        this.UnsubscribeFromCurrentOptions();
-        this.ShiftAndDiscardOptions(selection);
-        this.currentTile = selection;
-        this.GenerateNextOptions();
-        this.SubscribeToCurrentOptions();
+        if (!this.tileActivated)
+        {
+            this.UnsubscribeFromCurrentOptions();
+            this.ShiftAndDiscardOptions(selection);
+            this.currentTile = selection;
+            this.GenerateNextOptions();
+            this.SubscribeToCurrentOptions();
 
-        this.MovePlayer();
+            this.MovePlayer();
+
+            foreach(ITile tile in selection.GetComponents<ITile>())
+            {
+                tile.tileActivated(this);
+                this.tileActivated = true;
+                tile.onTileDeactivated += this.onTileDeactivated;
+            }
+        }
     }
 
     void MovePlayer()
@@ -135,5 +145,10 @@ public class BoardController : MonoBehaviour
                 });
             }
         }
+    }
+
+    void onTileDeactivated()
+    {
+        this.tileActivated = false;
     }
 }
