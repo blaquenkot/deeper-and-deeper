@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 
     public Light gameLight;
 
+    private int maxOxygen = 100;
     private int oxygen = 100;
     private int deepness = 100;
 
@@ -18,9 +19,14 @@ public class GameController : MonoBehaviour
         this.gameUIController.updateDeepness(this.deepness);
     }
 
+    public void updateMaxOxygen(int dMaxOxygen)
+    {
+        this.maxOxygen += dMaxOxygen;
+    }
+    
     public void updateOxygen(int dOxygen)
     {
-        this.oxygen += dOxygen;
+        this.oxygen = Mathf.Clamp(this.oxygen + dOxygen, 0, this.maxOxygen);
         this.gameUIController.updateOxygen(this.oxygen);
 
         if (this.oxygen <= 0)

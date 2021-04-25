@@ -6,6 +6,8 @@ public class TilesGenerator : MonoBehaviour
 
     public GameObject caveTilePrefab;
     public GameObject chestTilePrefab;
+    public GameObject lootTilePrefab;
+    public GameObject enemyMedusaTilePrefab;
     public GameObject enemySharkTilePrefab;
     public GameObject enemyAnguilaTilePrefab;
     public GameObject enemyPiranhaTilePrefab;
@@ -56,14 +58,30 @@ public class TilesGenerator : MonoBehaviour
         {
             return this.enemyAnguilaTilePrefab;
         }
-        else 
+        else if (this.generation >= 4)
         {
             return this.enemyPiranhaTilePrefab;
+        } 
+        else 
+        {
+            return this.enemyMedusaTilePrefab;
         }
     }
 
     private GameObject getBasicTile()
     {
-        return UnityEngine.Random.value > 0.5 ? this.chestTilePrefab : this.caveTilePrefab;
+        var random = UnityEngine.Random.value;
+        if (random >= 0.75)
+        {
+            return this.lootTilePrefab;
+        }
+        else if (random >= 0.5)
+        {
+            return this.chestTilePrefab;
+        }
+        else
+        {
+            return this.caveTilePrefab;
+        }
     }
 }

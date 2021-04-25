@@ -866,6 +866,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caveTilePrefab: {fileID: 4179794704530602525, guid: 9fb94049f36724a21a5f217b5471d289, type: 3}
   chestTilePrefab: {fileID: 7020607392311030370, guid: 14546d2254c9b4496bc12b0fda00ca7c, type: 3}
+  lootTilePrefab: {fileID: 7020607392311030370, guid: 0c8247f8f2e6e44049a147b29e903bca, type: 3}
+  enemyMedusaTilePrefab: {fileID: 4179794704530602525, guid: 21323dffafad34acf9036457ba048826, type: 3}
   enemySharkTilePrefab: {fileID: 4179794704530602525, guid: 6f775bcb294cd44f5a6e7c81b039b6b9, type: 3}
   enemyAnguilaTilePrefab: {fileID: 4179794704530602525, guid: 115bd947514d24eecb04e011b147321d, type: 3}
   enemyPiranhaTilePrefab: {fileID: 4179794704530602525, guid: 0cdb06448ad7941e4b46b212c2dbe648, type: 3}
