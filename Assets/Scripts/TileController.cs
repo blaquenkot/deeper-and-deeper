@@ -7,7 +7,6 @@ public class TileController : MonoBehaviour
     public Texture FrontTexture;
     public MeshRenderer FrontPlaneRenderer;
     public event Action<TileController> onClick;
-
     void Start()
     {
         if (this.FrontTexture != null)

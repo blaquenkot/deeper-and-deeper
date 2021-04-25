@@ -623,6 +623,7 @@ MonoBehaviour:
   FLASHLIGHTS_MAX: 3
   player: {fileID: 1428247771}
   gameUIController: {fileID: 79865801}
+  boardController: {fileID: 1857321776}
   gameLight: {fileID: 705507994}
 --- !u!4 &1272719489
 Transform:

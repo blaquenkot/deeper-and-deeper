@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameUIController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameUIController : MonoBehaviour
     public TMP_Text deepnessText;
     public Image coinsImage;
     public TMP_Text coinsText;
+    public Button flashlightButton;
+    public CanvasRenderer gameOverPanel;
 
     private float currentOxygen = 1f;
     private int currentDeepness = 0;
@@ -63,5 +66,20 @@ public class GameUIController : MonoBehaviour
     public void deactivateFlashlight()
     {
         this.gameController.deactivateFlashlight();
+    }
+
+    public void gameFinished()
+    {
+        this.oxygenImage.gameObject.SetActive(false);
+        this.oxygenSlider.gameObject.SetActive(false);
+        this.coinsImage.gameObject.SetActive(false);
+        this.coinsText.gameObject.SetActive(false);
+        this.flashlightButton.gameObject.SetActive(false);
+        this.gameOverPanel.gameObject.SetActive(true);
+    }
+
+    public void retryButtonClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

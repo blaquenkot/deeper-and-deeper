@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -103,17 +104,20 @@ public class BoardController : MonoBehaviour
             Instantiate(
                 nextTilesPrefabs[0],
                 centerTilePosition + new Vector3(-tileWidth - 0.15f, 0, -tileHeight - 0.15f),
-                newTileRotation
+                newTileRotation,
+                this.transform
             ).GetComponent<TileController>(),
             Instantiate(
                 nextTilesPrefabs[1],
                 centerTilePosition + new Vector3(0, 0, -tileHeight - 0.15f),
-                newTileRotation
+                newTileRotation,
+                this.transform
             ).GetComponent<TileController>(),
             Instantiate(
                 nextTilesPrefabs[2],
                 centerTilePosition + new Vector3(tileWidth + 0.15f, 0, -tileHeight - 0.15f),
-                newTileRotation
+                newTileRotation,
+                this.transform
             ).GetComponent<TileController>()
         );
     }
@@ -148,5 +152,41 @@ public class BoardController : MonoBehaviour
     void onTileDeactivated()
     {
         this.canMove = true;
+    }
+
+    public void gameFinished()
+    {
+        this.canMove = false;
+        var z = this.player.transform.position.z;
+        var x = 0;
+        List<int> childrenToRemove = new List<int>();
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            var child = this.transform.GetChild(i);
+            if (child.transform.localRotation.z == 0) 
+            {
+                child.localScale = new Vector3(1.1f, 0.1f, 1.1f);
+                child.localPosition = new Vector3(x * 1.25f - 4.4f, 0.5f, z);
+
+                if (x != 0 && x % 7 == 0) 
+                {
+                    z -= 1.2f;
+                    x = 0;
+                }
+                else 
+                {
+                    x += 1;
+                }
+            }
+            else
+            {
+                childrenToRemove.Add(i);
+            }
+        }
+
+        foreach(int i in childrenToRemove)
+        {
+            Destroy(this.transform.GetChild(i).gameObject);
+        }
     }
 }

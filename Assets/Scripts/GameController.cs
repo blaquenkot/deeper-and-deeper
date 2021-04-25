@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public int MAX_OXYGEN_CAPACITY = 200;
-    public int INITIAL_OXYGEN_CAPACITY = 100;
+    public int INITIAL_OXYGEN_CAPACITY = 30;
     public int OXYGEN_CAPACITY_INCREMENTS = 20;
     public int FLASHLIGHTS_MAX = 3;
 
     public PlayerController player;
     public GameUIController gameUIController;
+    public BoardController boardController;
 
     public Light gameLight;
 
@@ -140,7 +140,8 @@ public class GameController : MonoBehaviour
 
     private void playerDied()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        this.boardController.gameFinished();
+        this.gameUIController.gameFinished();
     }
 
     private float getOxygenPercentage()
