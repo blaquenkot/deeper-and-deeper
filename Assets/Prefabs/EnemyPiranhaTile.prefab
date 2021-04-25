@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  enemyName: Piranha
   canvasPrefab: {fileID: 7409085550650006207, guid: 1fe796490ff4e48b287165bd0dd37758, type: 3}
 --- !u!1001 &6072483296904093468
 PrefabInstance:
