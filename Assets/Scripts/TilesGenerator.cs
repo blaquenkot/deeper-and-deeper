@@ -29,14 +29,11 @@ public class TilesGenerator : MonoBehaviour
         // * But make everything less likely the deeper it gets
         // * Ensure enough coins before running out of oxygen the first time, and force a store
 
-        // TODO: Different random value per tile
-        var shouldHaveEnemy = (this.generation > 3 && UnityEngine.Random.value >= 0.6);
-
         return new GameObject[]
         {
-            shouldHaveEnemy ? this.getEnemy() : this.getBasicTile(),
-            shouldHaveEnemy ? this.getEnemy() : this.getBasicTile(),
-            shouldHaveEnemy ? this.getEnemy() : this.getBasicTile()
+            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile(),
+            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile(),
+            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile()
         };
     }
 
@@ -49,6 +46,11 @@ public class TilesGenerator : MonoBehaviour
             this.storeTilePrefab,
             this.chestTilePrefab
         };
+    }
+
+    private bool shouldHaveEnemy()
+    {
+        return this.generation > 3 && UnityEngine.Random.value >= 0.6;
     }
 
     private GameObject getEnemy()
