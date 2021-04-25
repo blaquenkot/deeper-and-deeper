@@ -11,7 +11,7 @@ public class BoardController : MonoBehaviour
     public GameObject background;
 
     private TilesGenerator tilesGenerator;
-    private bool tileActivated = false;
+    private bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -20,15 +20,6 @@ public class BoardController : MonoBehaviour
 
         this.GenerateNextOptions();
         this.SubscribeToCurrentOptions();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            ChooseTile(this.currentOptions.Item2);
-        }
     }
 
     void UnsubscribeFromCurrentOptions()
@@ -47,8 +38,9 @@ public class BoardController : MonoBehaviour
 
     void ChooseTile(TileController selection)
     {
-        if (!this.tileActivated)
+        if (this.canMove)
         {
+            this.canMove = false;
             this.UnsubscribeFromCurrentOptions();
             this.ShiftAndDiscardOptions(selection);
             this.currentTile = selection;
@@ -56,29 +48,33 @@ public class BoardController : MonoBehaviour
             this.SubscribeToCurrentOptions();
 
             this.MovePlayer();
-
-            foreach(ITile tile in selection.GetComponents<ITile>())
-            {
-                if (tile.tileActivated(this)) {
-                    this.tileActivated = true;
-                    tile.onTileDeactivated += this.onTileDeactivated;
-                }
-            }
         }
     }
 
     void MovePlayer()
     {
-        this.gameController.updateOxygen(-10);
-
         this.currentTile
             .Flip()
             .OnComplete(() => {
+                this.gameController.updateOxygen(-10);
                 this.gameController.updateDeepness(100);
                 this.player
                     .move(this.currentTile.transform.position)
                     .OnComplete(() => {
+                        var tileActivated = false;
+                        foreach(ITile tile in this.currentTile.GetComponents<ITile>())
+                        {
+                            if (tile.tileActivated(this)) {
+                                tileActivated = true;
+                                tile.onTileDeactivated += this.onTileDeactivated;
+                            }
+                        }
                         this.moveBackground();
+
+                        if (!tileActivated)
+                        {
+                            this.canMove = true;
+                        }
                     });
             });
     }
@@ -147,6 +143,6 @@ public class BoardController : MonoBehaviour
 
     void onTileDeactivated()
     {
-        this.tileActivated = false;
+        this.canMove = true;
     }
 }

@@ -620,6 +620,7 @@ MonoBehaviour:
   MAX_OXYGEN_CAPACITY: 200
   INITIAL_OXYGEN_CAPACITY: 100
   OXYGEN_CAPACITY_INCREMENTS: 20
+  player: {fileID: 1428247771}
   gameUIController: {fileID: 79865801}
   gameLight: {fileID: 705507994}
 --- !u!4 &1272719489

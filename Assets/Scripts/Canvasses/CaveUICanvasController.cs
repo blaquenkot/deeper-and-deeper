@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
-public class CaveUICanvasController : MonoBehaviour
+public class CaveUICanvasController : DestroyableCanvasController
 {
-    public event Action onDestroy;
     public TMP_Text titleText;
     public Image chestImage;
     public Button enterButton;
@@ -43,14 +41,5 @@ public class CaveUICanvasController : MonoBehaviour
     public void OnExitButton()
     {
         this.removeCanvas(0f);
-    }
-
-    private void removeCanvas(float time)
-    {
-        if(this.onDestroy != null)
-        {
-            this.onDestroy();
-        }
-        Destroy(this.transform.gameObject.GetComponentInParent<Canvas>().gameObject, time);
     }
 }

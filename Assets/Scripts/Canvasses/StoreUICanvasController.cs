@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class StoreUICanvasController : MonoBehaviour
+public class StoreUICanvasController : DestroyableCanvasController
 {
     public int OXYGEN_PRICE = 5;
 
@@ -13,7 +13,6 @@ public class StoreUICanvasController : MonoBehaviour
 
     public int MERMAID_TAIL_PRICE = 50;
 
-    public event Action onDestroy;
     public TMP_Text oxygenRechargeCostText;
     public TMP_Text oxygenCapacityCostText;
     public TMP_Text harpoonCostText;
@@ -108,15 +107,6 @@ public class StoreUICanvasController : MonoBehaviour
     public void OnExitButton()
     {
         this.removeCanvas(0f);
-    }
-
-    private void removeCanvas(float time)
-    {
-        if (this.onDestroy != null)
-        {
-            this.onDestroy();
-        }
-        Destroy(this.transform.gameObject.GetComponentInParent<Canvas>().gameObject, time);
     }
 
     private int availableCoins()

@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public int INITIAL_OXYGEN_CAPACITY = 100;
     public int OXYGEN_CAPACITY_INCREMENTS = 20;
 
+    public PlayerController player;
     public GameUIController gameUIController;
 
     public Light gameLight;
@@ -39,6 +40,15 @@ public class GameController : MonoBehaviour
     {
         this.oxygen = Mathf.Clamp(this.oxygen + dOxygen, 0, this.oxygenCapacity);
         this.gameUIController.updateOxygen(this.getOxygenPercentage());
+
+        if (dOxygen < 0)
+        {
+            this.player.lostOxygen();
+        }
+        else 
+        {
+            this.player.wonOxygen();
+        }
 
         if (this.oxygen <= 0)
         {

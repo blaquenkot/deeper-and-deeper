@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class EnemyUICanvasController : MonoBehaviour
+public class EnemyUICanvasController : DestroyableCanvasController
 {
-    public event Action onDestroy;
     public TMP_Text titleText;
     public Image chestImage;
     public Button fightButton;
@@ -47,14 +46,5 @@ public class EnemyUICanvasController : MonoBehaviour
         }
 
         this.removeCanvas(1.5f);
-    }
-
-    private void removeCanvas(float time)
-    {
-        if(this.onDestroy != null)
-        {
-            this.onDestroy();
-        }
-        Destroy(this.transform.gameObject.GetComponentInParent<Canvas>().gameObject, time);
     }
 }
