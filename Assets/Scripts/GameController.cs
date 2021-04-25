@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        this.gameUIController.updateOxygen(this.oxygen);
+        this.gameUIController.updateOxygen(this.getOxygenPercentage());
         this.gameUIController.updateDeepness(this.deepness);
     }
 
@@ -23,11 +23,11 @@ public class GameController : MonoBehaviour
     {
         this.maxOxygen += dMaxOxygen;
     }
-    
+
     public void updateOxygen(int dOxygen)
     {
         this.oxygen = Mathf.Clamp(this.oxygen + dOxygen, 0, this.maxOxygen);
-        this.gameUIController.updateOxygen(this.oxygen);
+        this.gameUIController.updateOxygen(this.getOxygenPercentage());
 
         if (this.oxygen <= 0)
         {
@@ -51,5 +51,10 @@ public class GameController : MonoBehaviour
     private void playerDied()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private float getOxygenPercentage()
+    {
+        return ((float)this.oxygen / (float)this.maxOxygen);
     }
 }

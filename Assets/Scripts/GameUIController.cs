@@ -1,18 +1,24 @@
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
-    public TMP_Text oxygenText;
+    public Slider oxygenSlider;
     public TMP_Text deepnessText;
     public TMP_Text coinsText;
 
+    private float currentOxygen = 1f;
     private int currentDeepness = 0;
 
-    public void updateOxygen(int oxygen)
+    public void updateOxygen(float oxygen)
     {
-        this.oxygenText.text = "Oxygen: " + oxygen;
+        DOTween
+            .To(() => this.currentOxygen, x => this.currentOxygen = x, oxygen, 0.5f)
+            .OnUpdate(() => {
+                this.oxygenSlider.value = this.currentOxygen;
+            });
     }
 
     public void updateDeepness(int deepness)
