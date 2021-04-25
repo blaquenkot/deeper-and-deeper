@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8108163171065766682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020607392311030370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60348408bab4542f28f4c9c7e0c90cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 7409085550650006207, guid: 660f49de3c9074486b9c04b6495614a7, type: 3}
+--- !u!1001 &1092795226701092707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6078648128009813608, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: FrontTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 9b729763cb30a44afaa438c96f56772d, type: 3}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.008726558
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_Name
+      value: AtlantisTile
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+--- !u!1 &7020607392311030370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+  m_PrefabInstance: {fileID: 1092795226701092707}
+  m_PrefabAsset: {fileID: 0}

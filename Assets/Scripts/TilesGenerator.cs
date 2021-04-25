@@ -12,7 +12,7 @@ public class TilesGenerator : MonoBehaviour
     public GameObject enemyAnguilaTilePrefab;
     public GameObject enemyPiranhaTilePrefab;
     public GameObject storeTilePrefab;
-
+    public GameObject atlantisTilePrefab;
     public GameObject[] Next()
     {
         if (this.generation == 0)
@@ -43,7 +43,7 @@ public class TilesGenerator : MonoBehaviour
         return new GameObject[]
         {
             this.chestTilePrefab,
-            this.storeTilePrefab,
+            this.atlantisTilePrefab,
             this.chestTilePrefab
         };
     }
