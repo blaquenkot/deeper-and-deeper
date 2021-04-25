@@ -6,20 +6,20 @@ using System;
 public class StoreUICanvasController : DestroyableCanvasController
 {
     public int OXYGEN_PRICE = 5;
-
     public int OXYGEN_CAPACITY_PRICE = 15;
-
     public int HARPOON_PRICE = 10;
-
+    public int FLASHLIGHT_PRICE = 15;
     public int MERMAID_TAIL_PRICE = 50;
 
     public TMP_Text oxygenRechargeCostText;
     public TMP_Text oxygenCapacityCostText;
     public TMP_Text harpoonCostText;
+    public TMP_Text flashlightCostText;
     public TMP_Text mermaidTailCostText;
     public Button oxygenRechargeButton;
     public Button oxygenCapacityButton;
     public Button harpoonButton;
+    public Button flashlightButton;
     public Button mermaidTailButton;
     public Button exitButton;
 
@@ -30,6 +30,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.oxygenRechargeCostText.text = $"({OXYGEN_PRICE} coins)";
         this.oxygenCapacityCostText.text = $"({OXYGEN_CAPACITY_PRICE} coins)";
         this.harpoonCostText.text = $"({HARPOON_PRICE} coins)";
+        this.flashlightCostText.text =  $"({FLASHLIGHT_PRICE} coins)";
         this.mermaidTailCostText.text = $"({MERMAID_TAIL_PRICE} coins)";
 
         this.updateButtonsAvailability();
@@ -43,6 +44,11 @@ public class StoreUICanvasController : DestroyableCanvasController
     public bool CanPurchaseHarpoon()
     {
         return !this.gameController.hasHarpoon && this.availableCoins() >= HARPOON_PRICE;
+    }
+
+    public bool CanPurchaseFlashlight()
+    {
+        return (this.gameController.flashlights != this.gameController.MAX_FLASHLIGHTS) && this.availableCoins() >= FLASHLIGHT_PRICE;
     }
 
     public bool CanPurchaseMermaidTail()
@@ -76,6 +82,18 @@ public class StoreUICanvasController : DestroyableCanvasController
 
         this.gameController.spend(HARPOON_PRICE);
         this.gameController.giveHarpoon();
+        this.updateButtonsAvailability();
+    }
+
+    public void OnPurchaseFlashlight()
+    {
+        if (!this.CanPurchaseFlashlight())
+        {
+            return;
+        }
+
+        this.gameController.spend(FLASHLIGHT_PRICE);
+        this.gameController.rechargeFlashlight();
         this.updateButtonsAvailability();
     }
 
@@ -119,6 +137,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.oxygenRechargeButton.enabled = this.CanPurchaseOxygen();
         this.oxygenCapacityButton.enabled = this.CanPurchaseOxygenCapacity();
         this.harpoonButton.enabled = this.CanPurchaseHarpoon();
+        this.flashlightButton.enabled = this.CanPurchaseFlashlight();
         this.mermaidTailButton.enabled = this.CanPurchaseMermaidTail();
     }
 }

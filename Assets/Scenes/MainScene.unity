@@ -620,7 +620,7 @@ MonoBehaviour:
   MAX_OXYGEN_CAPACITY: 200
   INITIAL_OXYGEN_CAPACITY: 100
   OXYGEN_CAPACITY_INCREMENTS: 20
-  FLASHLIGHTS_MAX: 3
+  MAX_FLASHLIGHTS: 3
   player: {fileID: 1428247771}
   gameUIController: {fileID: 79865801}
   boardController: {fileID: 1857321776}
@@ -911,6 +911,7 @@ MonoBehaviour:
   enemyPiranhaTilePrefab: {fileID: 4179794704530602525, guid: 0cdb06448ad7941e4b46b212c2dbe648, type: 3}
   storeTilePrefab: {fileID: 4179794704530602525, guid: e0cfb2916b1c1c04d9271505eab84e44, type: 3}
   atlantisTilePrefab: {fileID: 7020607392311030370, guid: ab293cef356c94f89acb2ec0760c5482, type: 3}
+  gameController: {fileID: 1272719488}
 --- !u!1001 &912720130642478424
 PrefabInstance:
   m_ObjectHideFlags: 0

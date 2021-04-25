@@ -13,6 +13,9 @@ public class TilesGenerator : MonoBehaviour
     public GameObject enemyPiranhaTilePrefab;
     public GameObject storeTilePrefab;
     public GameObject atlantisTilePrefab;
+
+    public GameController gameController;
+
     public GameObject[] Next()
     {
         if (this.generation == 0)
@@ -31,9 +34,9 @@ public class TilesGenerator : MonoBehaviour
 
         return new GameObject[]
         {
-            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile(),
-            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile(),
-            this.shouldHaveEnemy() ? this.getEnemy() : this.getBasicTile()
+            this.getTile(),
+            this.getTile(),
+            this.getTile()
         };
     }
 
@@ -43,27 +46,23 @@ public class TilesGenerator : MonoBehaviour
         return new GameObject[]
         {
             this.chestTilePrefab,
-            this.atlantisTilePrefab,
+            this.chestTilePrefab,
             this.chestTilePrefab
         };
     }
 
-    private bool shouldHaveEnemy()
-    {
-        return this.generation > 3 && UnityEngine.Random.value >= 0.6;
-    }
-
     private GameObject getEnemy()
     {
-        if (this.generation >= 7)
+        var random = UnityEngine.Random.value;
+        if (random >= 0.75)
         {
             return this.enemySharkTilePrefab;
         }
-        else if (this.generation >= 5)
+        else if (random >= 0.6)
         {
             return this.enemyAnguilaTilePrefab;
         }
-        else if (this.generation >= 4)
+        else if (random >= 0.4)
         {
             return this.enemyPiranhaTilePrefab;
         }
@@ -73,16 +72,28 @@ public class TilesGenerator : MonoBehaviour
         }
     }
 
-    private GameObject getBasicTile()
+    private GameObject getTile()
     {
         var random = UnityEngine.Random.value;
         if (random >= 0.75)
         {
             return this.lootTilePrefab;
         }
+        else if (random >= 0.6)
+        {
+            return this.getEnemy();
+        }
         else if (random >= 0.5)
         {
             return this.chestTilePrefab;
+        }
+        else if (random >= 0.4)
+        {
+            return this.storeTilePrefab;
+        }
+        else if (random >= 0.3)
+        {
+            return this.atlantisTilePrefab;
         }
         else
         {

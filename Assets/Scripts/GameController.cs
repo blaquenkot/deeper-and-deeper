@@ -3,9 +3,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public int MAX_OXYGEN_CAPACITY = 200;
-    public int INITIAL_OXYGEN_CAPACITY = 30;
+    public int INITIAL_OXYGEN_CAPACITY = 100;
     public int OXYGEN_CAPACITY_INCREMENTS = 20;
-    public int FLASHLIGHTS_MAX = 3;
+    public int MAX_FLASHLIGHTS = 3;
 
     public PlayerController player;
     public GameUIController gameUIController;
@@ -14,14 +14,12 @@ public class GameController : MonoBehaviour
     public Light gameLight;
 
     private int oxygenCapacity = 0;
-
     private int oxygen = 100;
     private int deepness = 100;
 
-    public int coins { get; set; } = 100;
-
+    public int coins { get; set; } = 0;
     public bool flashlightActivated { get; private set; } = false;
-    private int flashlights = 3;
+    public int flashlights { get; private set; } = 0;
     public bool hasHarpoon { get; private set; } = false;
     public bool hasMermaidTail { get; private set; } = false;
 
@@ -115,6 +113,11 @@ public class GameController : MonoBehaviour
         this.updateMaxOxygen(OXYGEN_CAPACITY_INCREMENTS);
     }
 
+    public void rechargeFlashlight()
+    {
+        this.flashlights = MAX_FLASHLIGHTS;
+    }
+
     public void activateFlashlight()
     {
         if (this.flashlights > 0)
@@ -130,7 +133,7 @@ public class GameController : MonoBehaviour
 
     public void flashlightUsed()
     {
-        this.flashlights = Mathf.Clamp(this.flashlights - 1, 0, FLASHLIGHTS_MAX);
+        this.flashlights = Mathf.Clamp(this.flashlights - 1, 0, MAX_FLASHLIGHTS);
 
         if (this.flashlights == 0)
         {

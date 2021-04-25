@@ -429,14 +429,17 @@ MonoBehaviour:
   OXYGEN_PRICE: 5
   OXYGEN_CAPACITY_PRICE: 15
   HARPOON_PRICE: 10
+  FLASHLIGHT_PRICE: 15
   MERMAID_TAIL_PRICE: 50
   oxygenRechargeCostText: {fileID: 5770619443542794725}
   oxygenCapacityCostText: {fileID: 910542944096932403}
   harpoonCostText: {fileID: 743026677998044136}
+  flashlightCostText: {fileID: 7180362393751636403}
   mermaidTailCostText: {fileID: 7857402169557139530}
   oxygenRechargeButton: {fileID: 6667152287592881646}
   oxygenCapacityButton: {fileID: 14009541634977336}
   harpoonButton: {fileID: 494519315778437091}
+  flashlightButton: {fileID: 8013845392638571960}
   mermaidTailButton: {fileID: 7032434339412114497}
   exitButton: {fileID: 6787414297853362573}
   gameController: {fileID: 0}
@@ -841,6 +844,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 7084396916741912866, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4167176566063763835}
+    - target: {fileID: 7084396916741912866, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPurchaseFlashlight
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
 --- !u!224 &4606997515982422056 stripped
@@ -848,6 +859,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3641555358853631154, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
   m_PrefabInstance: {fileID: 965512612116253850}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7180362393751636403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7981492444325381417, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
+  m_PrefabInstance: {fileID: 965512612116253850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8013845392638571960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7084396916741912866, guid: f171b3d2e4d3e40e0b31039032a7f0b7, type: 3}
+  m_PrefabInstance: {fileID: 965512612116253850}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4527998720036185292
 PrefabInstance:
   m_ObjectHideFlags: 0
