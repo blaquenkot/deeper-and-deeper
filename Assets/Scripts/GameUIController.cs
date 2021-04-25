@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
+    public GameController gameController;
     public Image oxygenImage;
     public Slider oxygenSlider;
     public TMP_Text deepnessText;
@@ -52,5 +53,16 @@ public class GameUIController : MonoBehaviour
         }
 
         this.coinsText.text = coins.ToString();
+    }
+
+    public void activateFlashlight()
+    {
+        this.gameController.activateFlashlight();
+    }
+
+    public void deactivateFlashlight()
+    {
+        print("this.gameController.deactivateFlashlight");
+        this.gameController.deactivateFlashlight();
     }
 }

@@ -620,6 +620,7 @@ MonoBehaviour:
   MAX_OXYGEN_CAPACITY: 200
   INITIAL_OXYGEN_CAPACITY: 100
   OXYGEN_CAPACITY_INCREMENTS: 20
+  FLASHLIGHTS_MAX: 3
   player: {fileID: 1428247771}
   gameUIController: {fileID: 79865801}
   gameLight: {fileID: 705507994}
@@ -740,6 +741,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5172021454526365017, guid: 0964299140f6d4bee91440635143dec8, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1272719488}
     - target: {fileID: 7377113135383069331, guid: 0964299140f6d4bee91440635143dec8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -13,7 +13,6 @@ public class BoardController : MonoBehaviour
     private TilesGenerator tilesGenerator;
     private bool canMove = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.tilesGenerator = GetComponent<TilesGenerator>();
@@ -38,7 +37,13 @@ public class BoardController : MonoBehaviour
 
     void ChooseTile(TileController selection)
     {
-        if (this.canMove)
+        print(this.gameController.flashlightActivated);
+        if (this.gameController.flashlightActivated)
+        {
+            selection.Flip();
+            this.gameController.flashlightUsed();
+        }
+        else if (this.canMove)
         {
             this.canMove = false;
             this.UnsubscribeFromCurrentOptions();

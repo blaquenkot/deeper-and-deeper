@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
     public int MAX_OXYGEN_CAPACITY = 200;
     public int INITIAL_OXYGEN_CAPACITY = 100;
     public int OXYGEN_CAPACITY_INCREMENTS = 20;
+    public int FLASHLIGHTS_MAX = 3;
 
     public PlayerController player;
     public GameUIController gameUIController;
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
 
     public int coins { get; set; } = 100;
 
+    public bool flashlightActivated { get; private set; } = false;
+    private int flashlights = 3;
     public bool hasHarpoon { get; private set; } = false;
     public bool hasMermaidTail { get; private set; } = false;
 
@@ -110,6 +113,32 @@ public class GameController : MonoBehaviour
     public void increaseOxygenCapacity()
     {
         this.updateMaxOxygen(OXYGEN_CAPACITY_INCREMENTS);
+    }
+
+    public void activateFlashlight()
+    {
+        print("activateFlashlight");
+        if (this.flashlights > 0)
+        {
+            print("this.flashlightActivated = true");
+            this.flashlightActivated = true;
+        }
+    }
+
+    public void deactivateFlashlight()
+    {
+        print("this.flashlightActivated = false");
+        this.flashlightActivated = false;
+    }
+
+    public void flashlightUsed()
+    {
+        this.flashlights = Mathf.Clamp(this.flashlights - 1, 0, FLASHLIGHTS_MAX);
+
+        if (this.flashlights == 0)
+        {
+            this.gameUIController.deactivateFlashlight();
+        }
     }
 
     private void playerDied()

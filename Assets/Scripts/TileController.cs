@@ -16,14 +16,9 @@ public class TileController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void OnMouseDown()
     {
+        print("OnMouseDown()");
         if (this.onClick != null) {
             this.onClick(this);
         }
