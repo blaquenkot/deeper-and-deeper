@@ -11,10 +11,12 @@ public class TilesGenerator : MonoBehaviour
     public GameObject enemySharkTilePrefab;
     public GameObject enemyAnguilaTilePrefab;
     public GameObject enemyPiranhaTilePrefab;
+    public GameObject storeTilePrefab;
 
     public GameObject[] Next()
     {
-        if (this.generation == 0) {
+        if (this.generation == 0)
+        {
             this.generation++;
             return this.FirstGeneration();
         }
@@ -27,6 +29,7 @@ public class TilesGenerator : MonoBehaviour
         // * But make everything less likely the deeper it gets
         // * Ensure enough coins before running out of oxygen the first time, and force a store
 
+        // TODO: Different random value per tile
         var shouldHaveEnemy = (this.generation > 3 && UnityEngine.Random.value >= 0.6);
 
         return new GameObject[]
@@ -43,7 +46,7 @@ public class TilesGenerator : MonoBehaviour
         return new GameObject[]
         {
             this.chestTilePrefab,
-            this.chestTilePrefab,
+            this.storeTilePrefab,
             this.chestTilePrefab
         };
     }
@@ -61,8 +64,8 @@ public class TilesGenerator : MonoBehaviour
         else if (this.generation >= 4)
         {
             return this.enemyPiranhaTilePrefab;
-        } 
-        else 
+        }
+        else
         {
             return this.enemyMedusaTilePrefab;
         }

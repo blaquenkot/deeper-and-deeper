@@ -764,13 +764,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7409085550650006207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6710146414cd1451187c976f246425f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 82a21124be981694c9ed78f029af3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 3221357584406702478}
   chestImage: {fileID: 2452923585200453503}
   enterButton: {fileID: 7532987868785879196}
   exitButton: {fileID: 6787414297853362573}
+  gameController: {fileID: 0}
 --- !u!1 &8150905987591829543
 GameObject:
   m_ObjectHideFlags: 0

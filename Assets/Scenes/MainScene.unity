@@ -617,6 +617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe93626412dc4adabdf7e767dbfeb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_OXYGEN_CAPACITY: 200
+  INITIAL_OXYGEN_CAPACITY: 100
+  OXYGEN_CAPACITY_INCREMENTS: 20
   gameUIController: {fileID: 79865801}
   gameLight: {fileID: 705507994}
 --- !u!4 &1272719489
@@ -895,6 +898,7 @@ MonoBehaviour:
   enemySharkTilePrefab: {fileID: 4179794704530602525, guid: 6f775bcb294cd44f5a6e7c81b039b6b9, type: 3}
   enemyAnguilaTilePrefab: {fileID: 4179794704530602525, guid: 115bd947514d24eecb04e011b147321d, type: 3}
   enemyPiranhaTilePrefab: {fileID: 4179794704530602525, guid: 0cdb06448ad7941e4b46b212c2dbe648, type: 3}
+  storeTilePrefab: {fileID: 4179794704530602525, guid: e0cfb2916b1c1c04d9271505eab84e44, type: 3}
 --- !u!1001 &912720130642478424
 PrefabInstance:
   m_ObjectHideFlags: 0
