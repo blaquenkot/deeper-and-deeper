@@ -69,12 +69,12 @@ public class BoardController : MonoBehaviour
 
     void MovePlayer()
     {
-        this.gameController.updateDeepness(100);
         this.gameController.updateOxygen(-10);
 
         this.currentTile
             .Flip()
             .OnComplete(() => {
+                this.gameController.updateDeepness(100);
                 this.player
                     .move(this.currentTile.transform.position)
                     .OnComplete(() => {

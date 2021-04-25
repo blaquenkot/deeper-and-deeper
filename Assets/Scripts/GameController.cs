@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public Light gameLight;
 
     private int oxygen = 100;
-    private int deepness = 0;
+    private int deepness = 100;
 
     private int coins = 0;
 
