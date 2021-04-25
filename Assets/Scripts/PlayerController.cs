@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
         {
             this.FrontPlaneRenderer.material.mainTexture = this.mermaidTailTexture;
         }
+
+        this.transform.DOPunchScale(this.transform.localScale * 1.1f, 0.25f);
     }
 
     public void wonCoins()

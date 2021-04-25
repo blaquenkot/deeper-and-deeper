@@ -46,6 +46,8 @@ public class GameUIController : MonoBehaviour
             .OnUpdate(() => {
                 this.deepnessText.text = this.currentDeepness + " METERS DEEP";
             });
+            
+        this.deepnessText.transform.DOPunchScale(this.deepnessText.transform.localScale * 1.1f, 0.25f);
     }
 
     public void updateCoins(int coins, bool animated = true)
