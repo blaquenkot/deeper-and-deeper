@@ -776,6 +776,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1857321775}
     m_Modifications:
+    - target: {fileID: 6078648128009813608, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: FrontTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 7e043a996754c426486eb9b42c98d875, type: 3}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_RootOrder
       value: 0

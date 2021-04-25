@@ -5,20 +5,34 @@ using UnityEngine.UI;
 
 public class GameUIController : MonoBehaviour
 {
+    public Image oxygenImage;
     public Slider oxygenSlider;
     public TMP_Text deepnessText;
+    public Image coinsImage;
     public TMP_Text coinsText;
 
     private float currentOxygen = 1f;
     private int currentDeepness = 0;
 
-    public void updateOxygen(float oxygen)
+    public void updateOxygen(float oxygen, bool animated = true)
     {
-        DOTween
-            .To(() => this.currentOxygen, x => this.currentOxygen = x, oxygen, 0.5f)
-            .OnUpdate(() => {
-                this.oxygenSlider.value = this.currentOxygen;
-            });
+        if (animated) {
+            if (oxygen > this.currentOxygen)
+            {
+                this.oxygenImage.transform.DOPunchScale(Vector3.one * 1.05f, 0.25f);
+            }
+
+            DOTween
+                .To(() => this.currentOxygen, x => this.currentOxygen = x, oxygen, 0.5f)
+                .OnUpdate(() => {
+                    this.oxygenSlider.value = this.currentOxygen;
+                });
+        }
+        else
+        {
+            this.currentOxygen = oxygen;
+            this.oxygenSlider.value = this.currentOxygen;
+        }
     }
 
     public void updateDeepness(int deepness)
@@ -30,8 +44,13 @@ public class GameUIController : MonoBehaviour
             });
     }
 
-    public void updateCoins(int coins)
+    public void updateCoins(int coins, bool animated = true)
     {
-        this.coinsText.text = "Coins: " + coins;
+        if (animated && coins > int.Parse(this.coinsText.text))
+        {
+            this.coinsImage.transform.DOPunchScale(Vector3.one * 1.05f, 0.25f);
+        }
+
+        this.coinsText.text = coins.ToString();
     }
 }

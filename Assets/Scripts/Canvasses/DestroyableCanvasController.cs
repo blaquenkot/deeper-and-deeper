@@ -1,13 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using System;
+
 public class DestroyableCanvasController : MonoBehaviour
 {
     public event Action onDestroy;
 
     internal void removeCanvas(float time)
     {
-        StartCoroutine(destroyCanvas(time));
+        StartCoroutine(this.destroyCanvas(time));
     }
 
     private IEnumerator destroyCanvas(float time)
@@ -19,5 +20,4 @@ public class DestroyableCanvasController : MonoBehaviour
         }
         Destroy(this.transform.gameObject.GetComponentInParent<Canvas>().gameObject);
     }
-
 }

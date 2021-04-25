@@ -26,9 +26,9 @@ public class GameController : MonoBehaviour
     {
         this.oxygenCapacity = INITIAL_OXYGEN_CAPACITY;
         this.oxygen = this.oxygenCapacity;
-        this.gameUIController.updateOxygen(this.getOxygenPercentage());
+        this.gameUIController.updateOxygen(this.getOxygenPercentage(), false);
         this.gameUIController.updateDeepness(this.deepness);
-        this.gameUIController.updateCoins(this.coins);
+        this.gameUIController.updateCoins(this.coins, false);
     }
 
     public void updateMaxOxygen(int dMaxOxygen)
@@ -67,6 +67,11 @@ public class GameController : MonoBehaviour
     {
         this.coins += dCoins;
         this.gameUIController.updateCoins(this.coins);
+
+        if (dCoins > 0)
+        {
+            this.player.wonCoins();
+        }
     }
 
     public void spend(int coins)
@@ -77,11 +82,13 @@ public class GameController : MonoBehaviour
     public void giveHarpoon()
     {
         this.hasHarpoon = true;
+        this.player.updateSprite(this.hasHarpoon, this.hasMermaidTail);
     }
 
     public void giveMermaidTail()
     {
         this.hasMermaidTail = true;
+        this.player.updateSprite(this.hasHarpoon, this.hasMermaidTail);
     }
 
     public bool hasMaxOxygen()
