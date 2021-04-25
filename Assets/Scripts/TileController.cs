@@ -18,7 +18,6 @@ public class TileController : MonoBehaviour
 
     void OnMouseDown()
     {
-        print("OnMouseDown()");
         if (this.onClick != null) {
             this.onClick(this);
         }

@@ -62,7 +62,6 @@ public class GameUIController : MonoBehaviour
 
     public void deactivateFlashlight()
     {
-        print("this.gameController.deactivateFlashlight");
         this.gameController.deactivateFlashlight();
     }
 }

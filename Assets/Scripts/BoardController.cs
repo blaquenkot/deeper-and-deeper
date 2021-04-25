@@ -37,7 +37,6 @@ public class BoardController : MonoBehaviour
 
     void ChooseTile(TileController selection)
     {
-        print(this.gameController.flashlightActivated);
         if (this.gameController.flashlightActivated)
         {
             selection.Flip();

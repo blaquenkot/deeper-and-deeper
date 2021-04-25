@@ -117,17 +117,14 @@ public class GameController : MonoBehaviour
 
     public void activateFlashlight()
     {
-        print("activateFlashlight");
         if (this.flashlights > 0)
         {
-            print("this.flashlightActivated = true");
             this.flashlightActivated = true;
         }
     }
 
     public void deactivateFlashlight()
     {
-        print("this.flashlightActivated = false");
         this.flashlightActivated = false;
     }
 
