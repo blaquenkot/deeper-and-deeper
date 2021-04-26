@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class GameController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GameController : MonoBehaviour
 
     private int oxygenCapacity = 0;
     private int oxygen = 100;
-    private int deepness = 100;
+    private int deepness = 0;
 
     public int coins { get; set; } = 0;
     public bool flashlightActivated { get; private set; } = false;
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour
         this.oxygenCapacity = INITIAL_OXYGEN_CAPACITY;
         this.oxygen = this.oxygenCapacity;
         this.gameUIController.updateOxygen(this.getOxygenPercentage(), false);
-        this.gameUIController.updateDeepness(this.deepness);
+        this.gameUIController.updateDeepness(this.deepness, false);
         this.gameUIController.updateCoins(this.coins, false);
         this.gameUIController.updateFlashlight(this.flashlights, false);
     }
@@ -60,11 +61,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void updateDeepness(int dDeepness)
+    public Sequence updateDeepness(int dDeepness)
     {
         this.deepness += dDeepness;
-        this.gameUIController.updateDeepness(this.deepness);
         this.gameLight.intensity *= 0.9f;
+        return this.gameUIController.updateDeepnessAnimated(this.deepness);
     }
 
     public void updateCoins(int dCoins)
@@ -99,7 +100,7 @@ public class GameController : MonoBehaviour
     {
         return this.oxygen >= 0;
     }
-    
+
     public bool hasMaxOxygen()
     {
         return this.oxygen >= this.oxygenCapacity;

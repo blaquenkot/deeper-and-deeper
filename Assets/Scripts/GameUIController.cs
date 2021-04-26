@@ -70,15 +70,27 @@ public class GameUIController : MonoBehaviour
                 .Play();
     }
 
-    public void updateDeepness(int deepness)
+    public void updateDeepness(int deepness, bool animated = true)
     {
-        DOTween
-            .To(() => this.currentDeepness, x => this.currentDeepness = x, deepness, 0.5f)
-            .OnUpdate(() => {
-                this.deepnessText.text = this.currentDeepness + " METERS DEEP";
-            });
-            
-        this.deepnessText.transform.DOPunchScale(this.deepnessText.transform.localScale * 1.1f, 0.25f);
+        if (animated)
+        {
+            this.updateDeepnessAnimated(deepness).Play();
+        }
+        else
+        {
+            this.currentDeepness = deepness;
+            this.deepnessText.text = this.currentDeepness + " METERS DEEP";
+        }
+    }
+
+    public Sequence updateDeepnessAnimated(int deepness) {
+        return DOTween.Sequence()
+            .Join(DOTween
+                .To(() => this.currentDeepness, x => this.currentDeepness = x, deepness, 0.5f)
+                .OnUpdate(() => {
+                    this.deepnessText.text = this.currentDeepness + " METERS DEEP";
+                }))
+            .Join(this.deepnessText.transform.DOPunchScale(this.deepnessText.transform.localScale * 1.1f, 0.25f));
     }
 
     public void updateCoins(int coins, bool animated = true)

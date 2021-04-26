@@ -20,6 +20,10 @@ public class BoardController : MonoBehaviour
 
         this.GenerateNextOptions();
         this.SubscribeToCurrentOptions();
+        
+        this.background.transform.position = new Vector3(this.player.transform.position.x, 
+                                                        this.background.transform.position.y, 
+                                                        this.player.transform.position.z);
     }
 
     void UnsubscribeFromCurrentOptions()
@@ -65,7 +69,6 @@ public class BoardController : MonoBehaviour
             .Flip()
             .OnComplete(() => {
                 this.gameController.updateOxygen(-10);
-                this.gameController.updateDeepness(100);
                 this.player
                     .move(this.currentTile.transform.position)
                     .OnComplete(() => {
@@ -78,7 +81,10 @@ public class BoardController : MonoBehaviour
                                     tile.onTileDeactivated += this.onTileDeactivated;
                                 }
                             }
-                            this.moveBackground();
+                            
+                            this.gameController.updateDeepness(25)
+                                            .Join(this.moveBackground())
+                                            .Play();
 
                             if (!tileActivated)
                             {
@@ -89,11 +95,11 @@ public class BoardController : MonoBehaviour
             });
     }
 
-    void moveBackground()
+    Tween moveBackground()
     {
-        this.background.transform.position = new Vector3(this.player.transform.position.x, 
+        return this.background.transform.DOMove(new Vector3(this.player.transform.position.x, 
                                                         this.background.transform.position.y, 
-                                                        this.player.transform.position.z);
+                                                        this.player.transform.position.z), 0.25f);
     }
 
     void GenerateNextOptions()
