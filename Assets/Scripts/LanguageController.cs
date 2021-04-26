@@ -400,6 +400,10 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
                 {
                     return "Tiburón";
                 }
+                else if (enemy == "Stingray")
+                {
+                    return "Raya";
+                }
                 else
                 {
                     return enemy;

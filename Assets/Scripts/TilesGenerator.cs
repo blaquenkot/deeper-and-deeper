@@ -12,6 +12,7 @@ public class TilesGenerator : MonoBehaviour
     public GameObject enemySharkTilePrefab;
     public GameObject enemyAnguilaTilePrefab;
     public GameObject enemyPiranhaTilePrefab;
+    public GameObject enemyStingrayTilePrefab;
     public GameObject storeTilePrefab;
     public GameObject atlantisTilePrefab;
 
@@ -23,10 +24,11 @@ public class TilesGenerator : MonoBehaviour
         this.bigChestTilePrefab.tag = "bigChestTilePrefab";
         this.chestTilePrefab.tag = "chestTilePrefab";
         this.lootTilePrefab.tag = "lootTilePrefab";
-        this. enemyMedusaTilePrefab.tag = "enemyMedusaTilePrefab";
+        this.enemyMedusaTilePrefab.tag = "enemyMedusaTilePrefab";
         this.enemySharkTilePrefab.tag = "enemySharkTilePrefab";
         this.enemyAnguilaTilePrefab.tag = "enemyAnguilaTilePrefab";
         this.enemyPiranhaTilePrefab.tag = "enemyPiranhaTilePrefab";
+        this.enemyStingrayTilePrefab.tag = "enemyStingrayTilePrefab";
         this.storeTilePrefab.tag = "storeTilePrefab";
         this.atlantisTilePrefab.tag = "atlantisTilePrefab";
     }
@@ -84,7 +86,14 @@ public class TilesGenerator : MonoBehaviour
     {
         var random = UnityEngine.Random.value;
         var currentTag = this.gameController.boardController.currentTile.tag;
-        if (random >= 0.75 && currentTag != this.enemySharkTilePrefab.tag)
+        if (random >= 0.9) {
+            return null; // kraken
+        }
+        else if (random >= 0.8 && currentTag != this.enemyStingrayTilePrefab.tag)
+        {
+            return this.enemyStingrayTilePrefab;
+        }
+        else if (random >= 0.75 && currentTag != this.enemySharkTilePrefab.tag)
         {
             return this.enemySharkTilePrefab;
         }
