@@ -5,7 +5,6 @@ using TMPro;
 public class MainMenuController : MonoBehaviour
 {
     public TMP_Text StartButtonText;
-    public TMP_Text IntroText;
     public SoundButton SoundButton;
     private LanguageController LanguageController;
     private SceneManagerController SceneManagerController;
@@ -16,7 +15,6 @@ public class MainMenuController : MonoBehaviour
         SceneManagerController = Object.FindObjectOfType<SceneManagerController>();
         SceneManagerController.CurrentSceneIndex = 1;
         LanguageController = LanguageController.Shared;
-        IntroText.text= LanguageController.Shared.getIntroText();
         this.reloadTexts();
     }
 
@@ -48,6 +46,5 @@ public class MainMenuController : MonoBehaviour
     private void reloadTexts()
     {
         StartButtonText.text = LanguageController.getStartButtonText();
-        IntroText.text= LanguageController.Shared.getIntroText();
     }
 }
