@@ -168,8 +168,8 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
-        this.oxygenCapacityButton.transform.DOPunchScale(this.oxygenCapacityButton.transform.localScale * 1.1f, 0.25f);
-        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenCapacityButton.mainTexture);
+        this.oxygenCapacityImage.transform.DOPunchScale(this.oxygenCapacityImage.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenCapacityImage.mainTexture);
         this.gameController.spend(OXYGEN_CAPACITY_PRICE);
         this.gameController.increaseOxygenCapacity();
         this.updateButtonsAvailability();
