@@ -112,6 +112,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         }
 
         this.oxygenRechargeImage.transform.DOPunchScale(this.oxygenRechargeImage.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenRechargeImage.mainTexture);
         this.gameController.spend(OXYGEN_PRICE);
         this.gameController.rechargeOxygen();
         this.updateButtonsAvailability();
@@ -125,6 +126,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         }
 
         this.harpoonImage.transform.DOPunchScale(this.harpoonImage.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.harpoonImage.mainTexture);
         this.gameController.spend(HARPOON_PRICE);
         this.gameController.giveHarpoon();
         this.updateButtonsAvailability();
@@ -138,6 +140,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         }
 
         this.flashlightImage.transform.DOPunchScale(this.flashlightImage.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.flashlightImage.mainTexture);
         this.gameController.spend(FLASHLIGHT_PRICE);
         this.gameController.rechargeFlashlight();
         this.updateButtonsAvailability();
@@ -154,6 +157,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.gameController.giveMermaidTail();
         this.mermaidTailImage.sprite = this.mermaidTailSprite;
         this.mermaidTailImage.transform.DOPunchScale(this.mermaidTailImage.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.mermaidTailImage.mainTexture);
         this.updateButtonsAvailability();
     }
 
@@ -165,6 +169,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         }
 
         this.oxygenCapacityButton.transform.DOPunchScale(this.oxygenCapacityButton.transform.localScale * 1.1f, 0.25f);
+        this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenCapacityButton.mainTexture);
         this.gameController.spend(OXYGEN_CAPACITY_PRICE);
         this.gameController.increaseOxygenCapacity();
         this.updateButtonsAvailability();

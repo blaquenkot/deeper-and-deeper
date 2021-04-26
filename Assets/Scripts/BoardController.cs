@@ -173,6 +173,11 @@ public class BoardController : MonoBehaviour
         this.canMove = canMove;
     }
 
+    public void updateCurrentTileMiniTile(Texture2D texture)
+    {
+        this.currentTile.addAditionalTile(texture);
+    }
+
     public void gameFinished()
     {
         this.canMove = false;

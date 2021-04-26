@@ -37,6 +37,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             if (random >= 0.5)
             {
                 this.image.sprite = this.chestSprite;
+                this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
                 this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
                 this.titleText.text = LanguageController.Shared.getChestFoundText();
                 this.gameController.updateCoins(50);
@@ -44,6 +45,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             else if (random >= 0.35)
             {
                 this.image.sprite = this.caveLootSprite;
+                this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
                 this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
                 this.titleText.text = LanguageController.Shared.getLootFoundText();
                 this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);

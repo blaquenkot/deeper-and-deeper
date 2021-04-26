@@ -35,6 +35,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
         if (gameController.hasMermaidTail)
         {
             this.image.sprite = this.atlantisEnteredSprite;
+            this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.subtitleText.text = LanguageController.Shared.getAtlantisEnteredText();
             this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.gameController.enteredAtlantis();
@@ -42,6 +43,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
         else
         {
             this.image.sprite = this.atlantisNotEnteredSprite;
+            this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.subtitleText.text = LanguageController.Shared.getAtlantisNotEnteredText();
             this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.gameController.updateOxygen(-20);

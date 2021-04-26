@@ -6,6 +6,7 @@ public class TileController : MonoBehaviour
 {
     public Texture FrontTexture;
     public MeshRenderer FrontPlaneRenderer;
+    public MeshRenderer MiniFrontPlaneRenderer;
     public event Action<TileController> onClick;
 
     void Start()
@@ -31,5 +32,11 @@ public class TileController : MonoBehaviour
     public Tween Flip()
     {
         return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
+    }
+
+    public void addAditionalTile(Texture2D texture)
+    {
+        this.MiniFrontPlaneRenderer.gameObject.SetActive(true);
+        this.MiniFrontPlaneRenderer.material.mainTexture = texture;
     }
 }

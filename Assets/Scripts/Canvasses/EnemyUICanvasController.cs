@@ -31,6 +31,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
         if (UnityEngine.Random.value >= winThreshold)
         {
             this.image.sprite = this.chestTexture;
+            this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.titleText.text = LanguageController.Shared.getEnemyWonText();
             this.gameController.updateCoins(25);
