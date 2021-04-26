@@ -30,7 +30,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
             this.image.sprite = this.chestTexture;
             this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.titleText.text = "You won and found a chest!";
-            this.gameController.updateCoins(10);
+            this.gameController.updateCoins(25);
         }
                     
         this.removeCanvas(1.5f);

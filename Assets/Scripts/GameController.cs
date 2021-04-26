@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
     public void updateMaxOxygen(int dMaxOxygen)
     {
         this.oxygenCapacity += dMaxOxygen;
+        this.gameUIController.updateMaxOxygen(this.oxygenCapacity);
     }
 
     public void updateOxygen(int dOxygen)
@@ -112,6 +113,7 @@ public class GameController : MonoBehaviour
     public void increaseOxygenCapacity()
     {
         this.updateMaxOxygen(OXYGEN_CAPACITY_INCREMENTS);
+        this.oxygen = this.oxygenCapacity;
     }
 
     public void rechargeFlashlight()

@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class StoreUICanvasController : DestroyableCanvasController
 {
-    private int OXYGEN_PRICE = 20;
+    private int OXYGEN_PRICE = 10;
     private int OXYGEN_CAPACITY_PRICE = 60;
     private int HARPOON_PRICE = 70;
     private int FLASHLIGHT_PRICE = 30;
@@ -138,7 +138,6 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.oxygenCapacityButton.transform.DOPunchScale(this.oxygenCapacityButton.transform.localScale * 1.1f, 0.25f);
         this.gameController.spend(OXYGEN_CAPACITY_PRICE);
         this.gameController.increaseOxygenCapacity();
-        this.gameController.rechargeOxygen();
         this.updateButtonsAvailability();
     }
 
