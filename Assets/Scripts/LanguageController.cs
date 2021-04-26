@@ -86,14 +86,14 @@ class LanguageController : MonoBehaviour {
 You can <b>find oxygen tanks</b> along the way, or <b>buy</b> a refill in a <b>store</b>.
 Exploring <b>caves</b> costs oxygen, but you can find <b>treasures</b> there too.
 <b>Enemies</b> can be attacked, if you win you obtain gold. Increase your chances by buying a <b>weapon</b>.
-The <b>flashlight</b> allows you to reveal the cards before picking.
+Click on your <b>flashlight</b> allows you to reveal the cards before picking.
 See how deep you can dive, and <b>enter Atlantis successfully to win the game!</b>";
             case Language.ES: return 
 @"Si te quedás sin <b>oxígeno</b>, el juego termina.
 Podés <b>encontrar tanques de oxígeno</b> en el camino, o <b>comprarlos</b> en una <b>tienda</b>.
 Explorar <b>cuevas</b> demanda oxígeno, pero podés encontrar <b>tesoros</b> si lo hacés.
 Los <b>enemigos</b> pueden ser atacados, si ganás obtendrás oro. Incrementá tus chances comprando un <b>arma</b>.
-La <b>linterna</b> te permite revelar cartas antes de elegir.
+Seleccioná tu <b>linterna</b> para revelar cartas antes de elegir.
 Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ganar el juego!</b>";
         }
 
@@ -225,7 +225,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
     {
         switch (CurrentLanguage) 
         {
-            case Language.EN: return "It attacked you and run away!";
+            case Language.EN: return "It attacked you and ran away!";
             case Language.ES: return "Te atacó y escapó!";
         }
 
