@@ -23,6 +23,11 @@ public class TileController : MonoBehaviour
         }
     }
 
+    public bool canFlip()
+    {
+        return this.transform.localRotation.z != 0;
+    }
+    
     public Tween Flip()
     {
         return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);

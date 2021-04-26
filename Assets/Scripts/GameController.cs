@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
         this.gameUIController.updateOxygen(this.getOxygenPercentage(), false);
         this.gameUIController.updateDeepness(this.deepness);
         this.gameUIController.updateCoins(this.coins, false);
+        this.gameUIController.updateFlashlight(this.flashlights, false);
     }
 
     public void updateMaxOxygen(int dMaxOxygen)
@@ -116,6 +117,7 @@ public class GameController : MonoBehaviour
     public void rechargeFlashlight()
     {
         this.flashlights = MAX_FLASHLIGHTS;
+        this.gameUIController.updateFlashlight(this.flashlights);
     }
 
     public void activateFlashlight()
@@ -134,11 +136,17 @@ public class GameController : MonoBehaviour
     public void flashlightUsed()
     {
         this.flashlights = Mathf.Clamp(this.flashlights - 1, 0, MAX_FLASHLIGHTS);
+        this.gameUIController.updateFlashlight(this.flashlights);
 
         if (this.flashlights == 0)
         {
             this.gameUIController.deactivateFlashlight();
         }
+    }
+
+    public bool hasFlashlights()
+    {
+        return this.flashlights > 0;
     }
 
     private void playerDied()

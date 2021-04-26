@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameUIController : MonoBehaviour
 {
+    public Sprite flashlightSprite;
+    public Sprite selectedFlashlightSprite;
     public GameController gameController;
     public Image oxygenImage;
     public Slider oxygenSlider;
@@ -13,6 +15,7 @@ public class GameUIController : MonoBehaviour
     public Image coinsImage;
     public TMP_Text coinsText;
     public Button flashlightButton;
+    public TMP_Text flashlightText;
     public CanvasRenderer gameOverPanel;
 
     private float currentOxygen = 1f;
@@ -60,13 +63,29 @@ public class GameUIController : MonoBehaviour
         this.coinsText.text = coins.ToString();
     }
 
+    public void updateFlashlight(int count, bool animated = true)
+    {
+        this.flashlightText.text = count.ToString();
+        
+        if (animated)
+        {
+            this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.05f, 0.25f);
+        }
+    }
+
     public void activateFlashlight()
     {
-        this.gameController.activateFlashlight();
+        if (this.gameController.hasFlashlights())
+        {
+            this.flashlightButton.image.sprite = this.selectedFlashlightSprite;
+            this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.25f);
+            this.gameController.activateFlashlight();
+        }
     }
 
     public void deactivateFlashlight()
     {
+        this.flashlightButton.image.sprite = this.flashlightSprite;
         this.gameController.deactivateFlashlight();
     }
 

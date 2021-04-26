@@ -40,8 +40,11 @@ public class BoardController : MonoBehaviour
     {
         if (this.gameController.flashlightActivated)
         {
-            selection.Flip();
-            this.gameController.flashlightUsed();
+            if (selection.canFlip())
+            {
+                selection.Flip();
+                this.gameController.flashlightUsed();
+            }
         }
         else if (this.canMove)
         {
