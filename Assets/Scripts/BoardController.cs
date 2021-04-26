@@ -167,6 +167,11 @@ public class BoardController : MonoBehaviour
         this.canMove = true;
     }
 
+    public void updateCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
     public void gameFinished()
     {
         this.canMove = false;

@@ -18,6 +18,7 @@ public class GameUIController : MonoBehaviour
     public Button flashlightButton;
     public TMP_Text flashlightText;
     public CanvasRenderer gameOverPanel;
+    public CanvasRenderer helpPanel;
 
     private Color oxygenSliderColor;
     private float currentOxygen = 1f;
@@ -142,5 +143,17 @@ public class GameUIController : MonoBehaviour
     public void retryButtonClicked()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void showHelp()
+    {
+        this.gameController.boardController.updateCanMove(false);
+        this.helpPanel.gameObject.SetActive(true);
+    }
+
+    public void hideHelp()
+    {
+        this.helpPanel.gameObject.SetActive(false);
+        this.gameController.boardController.updateCanMove(true);
     }
 }
