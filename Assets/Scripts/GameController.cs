@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour
 {
     public int MAX_OXYGEN_CAPACITY = 200;
     public int INITIAL_OXYGEN_CAPACITY = 100;
-    public int OXYGEN_CAPACITY_INCREMENTS = 20;
+    public int OXYGEN_CAPACITY_INCREMENTS = 40;
     public int MAX_FLASHLIGHTS = 3;
 
     public PlayerController player;

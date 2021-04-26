@@ -159,7 +159,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
     {
         switch (CurrentLanguage) 
         {
-            case Language.EN: return "You found a chest!";
+            case Language.EN: return "You found a treasure!";
             case Language.ES: return "Encontraste un tesoro!";
         }
 
@@ -172,6 +172,17 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         {
             case Language.EN: return "You found nothing!";
             case Language.ES: return "No encontraste nada!";
+        }
+
+        return "";
+    }
+
+    public string getLootFoundText()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "You found some oxygen!";
+            case Language.ES: return "Encontraste algo de oxígeno!";
         }
 
         return "";

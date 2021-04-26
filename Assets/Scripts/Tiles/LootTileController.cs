@@ -7,14 +7,13 @@ public class LootTileController : MonoBehaviour, ITile
 
     public bool tileActivated(BoardController parent)
     {
-        // TODO: Show some UI indication that the the player got oxygen from this tile
         if (UnityEngine.Random.value >= 0.5) 
         {
-            parent.gameController.updateOxygen(10);
+            parent.gameController.updateOxygen(40);
         }
         else
         {
-            parent.gameController.updateOxygen(5);
+            parent.gameController.updateOxygen(20);
         }
         
         return false;

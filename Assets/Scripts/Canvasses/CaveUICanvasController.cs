@@ -7,6 +7,7 @@ public class CaveUICanvasController : DestroyableCanvasController
 {
     public Sprite chestSprite;
     public Sprite caveDeathSprite;
+    public Sprite caveLootSprite;
     public TMP_Text titleText;
     public Image image;
     public Button enterButton;
@@ -40,9 +41,11 @@ public class CaveUICanvasController : DestroyableCanvasController
                 this.titleText.text = LanguageController.Shared.getChestFoundText();
                 this.gameController.updateCoins(50);
             }
-            else if (random >= 0.2)
+            else if (random >= 0.35)
             {
-                this.titleText.text = LanguageController.Shared.getNothingFoundText();
+                this.image.sprite = this.caveLootSprite;
+                this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.titleText.text = LanguageController.Shared.getLootFoundText();
                 this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             }
             else

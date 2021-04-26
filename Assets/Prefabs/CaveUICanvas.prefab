@@ -769,6 +769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestSprite: {fileID: 21300000, guid: 47d190e92c6d04af296c27575fd76f06, type: 3}
   caveDeathSprite: {fileID: 21300000, guid: 3a274fa276b454ef28d6e24e4cdfe251, type: 3}
+  caveLootSprite: {fileID: 21300000, guid: 9908e30e4c6c340fb9430dfb1ebef660, type: 3}
   titleText: {fileID: 3221357584406702478}
   image: {fileID: 2452923585200453503}
   enterButton: {fileID: 7532987868785879196}
