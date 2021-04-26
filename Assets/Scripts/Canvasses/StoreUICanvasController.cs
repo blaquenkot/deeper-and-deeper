@@ -33,8 +33,14 @@ public class StoreUICanvasController : DestroyableCanvasController
 
     public GameController gameController;
 
+    private Color enabledColor = new Color();
+    private Color disabledColor = new Color();
+
     void Start()
     {
+        ColorUtility.TryParseHtmlString("#BF6DAE", out this.enabledColor);
+        ColorUtility.TryParseHtmlString("#664D60", out this.disabledColor);
+
         this.oxygenRechargeCostText.text = $"({OXYGEN_PRICE} coins)";
         this.oxygenCapacityCostText.text = $"({OXYGEN_CAPACITY_PRICE} coins)";
         this.harpoonCostText.text = $"({HARPOON_PRICE} coins)";
@@ -154,9 +160,19 @@ public class StoreUICanvasController : DestroyableCanvasController
     private void updateButtonsAvailability()
     {
         this.oxygenRechargeButton.enabled = this.CanPurchaseOxygen();
+        this.oxygenRechargeButton.image.color = this.colorForState(this.oxygenRechargeButton.enabled);
         this.oxygenCapacityButton.enabled = this.CanPurchaseOxygenCapacity();
+        this.oxygenCapacityButton.image.color = this.colorForState(this.oxygenCapacityButton.enabled);
         this.harpoonButton.enabled = this.CanPurchaseHarpoon();
+        this.harpoonButton.image.color = this.colorForState(this.harpoonButton.enabled);
         this.flashlightButton.enabled = this.CanPurchaseFlashlight();
+        this.flashlightButton.image.color = this.colorForState(this.flashlightButton.enabled);
         this.mermaidTailButton.enabled = this.CanPurchaseMermaidTail();
+        this.mermaidTailButton.image.color = this.colorForState(this.mermaidTailButton.enabled);
+    }
+
+    private Color colorForState(bool enabled)
+    {
+        return (enabled ? this.enabledColor : this.disabledColor);
     }
 }

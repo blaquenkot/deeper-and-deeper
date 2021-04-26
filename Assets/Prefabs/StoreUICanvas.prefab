@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4, g: 0.7529412, b: 0.7764706, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -426,11 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2756982993e678d46a059ddee9cdb5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OXYGEN_PRICE: 0
-  OXYGEN_CAPACITY_PRICE: 0
-  HARPOON_PRICE: 0
-  FLASHLIGHT_PRICE: 0
-  MERMAID_TAIL_PRICE: 0
   mermaidTailSprite: {fileID: 21300000, guid: 12c75926f4c5a4585bbd3b0492069694, type: 3}
   oxygenRechargeCostText: {fileID: 5770619443542794725}
   oxygenCapacityCostText: {fileID: 910542944096932403}
