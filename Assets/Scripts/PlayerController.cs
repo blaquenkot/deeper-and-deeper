@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem wonBubblesParticles;
     public ParticleSystem lostBubblesParticles;
 
-    public Tween move(Vector3 destination)
+    public Tween move(float z)
     {
-        return this.transform.DOMoveZ(destination.z - 0.75f, 0.3f);
+        return this.transform.DOMoveZ(z, 0.3f);
     }
 
     public void updateSprite(bool hasHarpoon, bool hasMermaidTail)

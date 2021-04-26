@@ -69,9 +69,14 @@ public class BoardController : MonoBehaviour
             .Flip()
             .OnComplete(() => {
                 this.gameController.updateOxygen(-10);
-                this.player
-                    .move(this.currentTile.transform.position)
-                    .OnComplete(() => {
+
+                var z = this.currentTile.transform.position.z - 0.75f;
+
+                this.gameController
+                    .updateDeepness(25)                                          
+                    .Join(this.moveBackground(z))
+                    .Join(this.player.move(z))
+                    .Play().OnComplete(() => {
                         if (this.gameController.isAlive()) {
                             var tileActivated = false;
                             foreach(ITile tile in this.currentTile.GetComponents<ITile>())
@@ -81,10 +86,6 @@ public class BoardController : MonoBehaviour
                                     tile.onTileDeactivated += this.onTileDeactivated;
                                 }
                             }
-                            
-                            this.gameController.updateDeepness(25)
-                                            .Join(this.moveBackground())
-                                            .Play();
 
                             if (!tileActivated)
                             {
@@ -95,11 +96,11 @@ public class BoardController : MonoBehaviour
             });
     }
 
-    Tween moveBackground()
+    Tween moveBackground(float z)
     {
         return this.background.transform.DOMove(new Vector3(this.player.transform.position.x, 
                                                         this.background.transform.position.y, 
-                                                        this.player.transform.position.z), 0.25f);
+                                                        z), 0.25f);
     }
 
     void GenerateNextOptions()

@@ -55,6 +55,28 @@ class LanguageController : MonoBehaviour {
         return "";
     }
 
+    public string getHelpTitle()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "Help";
+            case Language.ES: return "Ayuda";
+        }
+
+        return "";
+    }
+
+    public string getHelpCloseButton()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "Close";
+            case Language.ES: return "Cerrar";
+        }
+
+        return "";
+    }
+
     public string getHelpText()
     {
         switch (CurrentLanguage) 

@@ -20,6 +20,8 @@ public class GameUIController : MonoBehaviour
     public CanvasRenderer gameOverPanel;
     public CanvasRenderer helpPanel;
     public TMP_Text helpText;
+    public TMP_Text helpTitle;
+    public TMP_Text helpCloseText;
 
     private Color oxygenSliderColor;
     private float currentOxygen = 1f;
@@ -29,11 +31,14 @@ public class GameUIController : MonoBehaviour
     {
         this.oxygenSliderColor = this.oxygenSliderImage.color;
         this.helpText.text = LanguageController.Shared.getHelpText();
+        this.helpTitle.text = LanguageController.Shared.getHelpTitle();
+        this.helpCloseText.text = LanguageController.Shared.getHelpCloseButton();
     }
 
     public void updateOxygen(float oxygen, bool animated = true)
     {
-        if (animated) {
+        if (animated) 
+        {
             if (oxygen > this.currentOxygen)
             {
                 this.oxygenImage.transform.DOPunchScale(this.oxygenImage.transform.localScale * 1.05f, 0.25f);
@@ -65,6 +70,8 @@ public class GameUIController : MonoBehaviour
     {
         this.currentOxygen = 1f;
         this.oxygenSlider.value = 1f;
+
+        this.oxygenSliderImage.color = this.oxygenSliderColor;
 
         var x = Mathf.Clamp(this.oxygenSlider.transform.localScale.x + 0.25f, 1f, 2.7f);
         DOTween.Sequence()
