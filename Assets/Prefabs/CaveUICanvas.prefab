@@ -767,11 +767,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a21124be981694c9ed78f029af3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestSprite: {fileID: 21300000, guid: 5427d11733f4f404086e827cab6b34ee, type: 3}
+  chestSprite: {fileID: 21300000, guid: 47d190e92c6d04af296c27575fd76f06, type: 3}
+  caveDeathSprite: {fileID: 21300000, guid: 3a274fa276b454ef28d6e24e4cdfe251, type: 3}
   titleText: {fileID: 3221357584406702478}
   image: {fileID: 2452923585200453503}
   enterButton: {fileID: 7532987868785879196}
+  enterButtonText: {fileID: 5748184572535374797}
   exitButton: {fileID: 6787414297853362573}
+  exitButtonText: {fileID: 3736833514609104751}
   gameController: {fileID: 0}
 --- !u!1 &8150905987591829543
 GameObject:

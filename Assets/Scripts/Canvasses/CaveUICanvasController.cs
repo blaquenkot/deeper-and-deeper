@@ -6,43 +6,56 @@ using DG.Tweening;
 public class CaveUICanvasController : DestroyableCanvasController
 {
     public Sprite chestSprite;
+    public Sprite caveDeathSprite;
     public TMP_Text titleText;
     public Image image;
     public Button enterButton;
+    public TMP_Text enterButtonText;
     public Button exitButton;
-
+    public TMP_Text exitButtonText;
     public GameController gameController;
 
     void Start()
     {
+        this.titleText.text = LanguageController.Shared.getCaveFoundText();
+        this.enterButtonText.text = LanguageController.Shared.getEnterText();
+        this.exitButtonText.text = LanguageController.Shared.getGoAwayText();
         this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
     }
     
     public void OnEnterButton()
     {
-        this.gameController.updateOxygen(-5);
+        this.gameController.updateOxygen(-10);
 
         this.enterButton.gameObject.SetActive(false);
         this.exitButton.gameObject.SetActive(false);
 
-        var random = UnityEngine.Random.value;
-        if (random >= 0.5)
+        if (this.gameController.isAlive()) 
         {
-            this.image.sprite = this.chestSprite;
-            this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
-            this.titleText.text = "You found a chest!";
-            this.gameController.updateCoins(50);
-        }
-        else if (random >= 0.2)
-        {
-            this.titleText.text = "You found nothing";
-            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            var random = UnityEngine.Random.value;
+            if (random >= 0.5)
+            {
+                this.image.sprite = this.chestSprite;
+                this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.titleText.text = LanguageController.Shared.getChestFoundText();
+                this.gameController.updateCoins(50);
+            }
+            else if (random >= 0.2)
+            {
+                this.titleText.text = LanguageController.Shared.getNothingFoundText();
+                this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            }
+            else
+            {
+                // enemy?
+                this.titleText.text = LanguageController.Shared.getNothingFoundText();
+                this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            }
         }
         else
         {
-            // enemy?
-            this.titleText.text = "You found nothing";
-            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.image.sprite = this.caveDeathSprite;
+            this.titleText.text = LanguageController.Shared.getYouDiedText();
         }
 
         this.removeCanvas(1.5f);

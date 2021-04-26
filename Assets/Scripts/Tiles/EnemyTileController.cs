@@ -14,7 +14,7 @@ public class EnemyTileController : MonoBehaviour, ITile
         canvas.damage = this.damage;
         canvas.gameController = parent.gameController;
         canvas.onDestroy += this.OnTileDeactivated;
-        canvas.enemyText.text = enemyName;
+        canvas.enemyText.text = LanguageController.Shared.getEnemyName(enemyName);
         canvas.updateImage(this.GetComponents<TileController>()[0].FrontTexture);
         return true;
     }

@@ -905,7 +905,9 @@ MonoBehaviour:
   titleText: {fileID: 3221357584406702478}
   image: {fileID: 2452923585200453503}
   fightButton: {fileID: 7532987868785879196}
+  fightButtonText: {fileID: 5748184572535374797}
   exitButton: {fileID: 6787414297853362573}
+  exitButtonText: {fileID: 3736833514609104751}
   damage: 0
   gameController: {fileID: 0}
 --- !u!1 &8150905987591829543

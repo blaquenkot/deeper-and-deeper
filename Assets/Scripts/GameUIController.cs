@@ -82,7 +82,7 @@ public class GameUIController : MonoBehaviour
         else
         {
             this.currentDeepness = deepness;
-            this.deepnessText.text = this.currentDeepness + " METERS DEEP";
+            this.deepnessText.text = LanguageController.Shared.getDeepnessText(this.currentDeepness);
         }
     }
 
@@ -91,7 +91,7 @@ public class GameUIController : MonoBehaviour
             .Join(DOTween
                 .To(() => this.currentDeepness, x => this.currentDeepness = x, deepness, 0.5f)
                 .OnUpdate(() => {
-                    this.deepnessText.text = this.currentDeepness + " METERS DEEP";
+                    this.deepnessText.text = LanguageController.Shared.getDeepnessText(this.currentDeepness);
                 }))
             .Join(this.deepnessText.transform.DOPunchScale(this.deepnessText.transform.localScale * 1.1f, 0.25f));
     }

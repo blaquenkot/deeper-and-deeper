@@ -10,9 +10,17 @@ public class EnemyUICanvasController : DestroyableCanvasController
     public TMP_Text titleText;
     public Image image;
     public Button fightButton;
+    public TMP_Text fightButtonText;
     public Button exitButton;
+    public TMP_Text exitButtonText;
     public int damage;
     public GameController gameController;
+
+    void Start()
+    {
+        this.fightButtonText.text = LanguageController.Shared.getFightButtonText();
+        this.exitButtonText.text = LanguageController.Shared.getGoAwayText();
+    }
 
     public void OnFightButton()
     {
@@ -21,7 +29,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
 
         if (UnityEngine.Random.value >= 0.25)
         {
-            this.titleText.text = "It attacked you and run away!";
+            this.titleText.text = LanguageController.Shared.getEnemyLostText();
             this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.gameController.updateOxygen(-this.damage);
         }
@@ -29,7 +37,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
         {
             this.image.sprite = this.chestTexture;
             this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
-            this.titleText.text = "You won and found a chest!";
+            this.titleText.text = LanguageController.Shared.getEnemyWonText();
             this.gameController.updateCoins(25);
         }
                     
@@ -43,12 +51,12 @@ public class EnemyUICanvasController : DestroyableCanvasController
 
         if (UnityEngine.Random.value >= 0.35)
         {
-            this.titleText.text = "You ran away!";
+            this.titleText.text = LanguageController.Shared.getEnemyEscapeText();
             this.gameController.updateOxygen(-5);
         }
         else
         {
-            this.titleText.text = "It attacked you and run away!";
+            this.titleText.text = LanguageController.Shared.getEnemyLostText();
             this.gameController.updateOxygen(-this.damage);
         }
 

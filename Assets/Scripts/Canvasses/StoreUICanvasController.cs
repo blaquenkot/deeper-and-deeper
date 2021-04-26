@@ -19,17 +19,27 @@ public class StoreUICanvasController : DestroyableCanvasController
     public TMP_Text flashlightCostText;
     public TMP_Text mermaidTailCostText;
     public Button oxygenRechargeButton;
+    public TMP_Text oxygenRechargeButtonText;
     public Button oxygenCapacityButton;
+    public TMP_Text oxygenCapacityButtonText;
     public Button harpoonButton;
+    public TMP_Text harpoonButtonText;
     public Button flashlightButton;
+    public TMP_Text flashlightButtonText;
     public Button mermaidTailButton;
+    public TMP_Text mermaidTailButtonText;
     public Image oxygenRechargeImage;
     public Image oxygenCapacityImage;
     public Image mermaidTailImage;
     public Image harpoonImage;
     public Image flashlightImage;
+    public TMP_Text oxygenRechargeText;
+    public TMP_Text oxygenCapacityText;
+    public TMP_Text harpoonText;
+    public TMP_Text flashlightText;
     public TMP_Text mermaidTailText;
     public Button exitButton;
+    public TMP_Text exitButtonText;
 
     public GameController gameController;
 
@@ -41,17 +51,30 @@ public class StoreUICanvasController : DestroyableCanvasController
         ColorUtility.TryParseHtmlString("#BF6DAE", out this.enabledColor);
         ColorUtility.TryParseHtmlString("#664D60", out this.disabledColor);
 
-        this.oxygenRechargeCostText.text = $"({OXYGEN_PRICE} coins)";
-        this.oxygenCapacityCostText.text = $"({OXYGEN_CAPACITY_PRICE} coins)";
-        this.harpoonCostText.text = $"({HARPOON_PRICE} coins)";
-        this.flashlightCostText.text =  $"({FLASHLIGHT_PRICE} coins)";
-        this.mermaidTailCostText.text = $"({MERMAID_TAIL_PRICE} coins)";
+        this.oxygenRechargeCostText.text = LanguageController.Shared.getStoreCoinsText(OXYGEN_PRICE);
+        this.oxygenCapacityCostText.text = LanguageController.Shared.getStoreCoinsText(OXYGEN_CAPACITY_PRICE);
+        this.harpoonCostText.text = LanguageController.Shared.getStoreCoinsText(HARPOON_PRICE);
+        this.flashlightCostText.text =  LanguageController.Shared.getStoreCoinsText(FLASHLIGHT_PRICE);
+        this.mermaidTailCostText.text = LanguageController.Shared.getStoreCoinsText(MERMAID_TAIL_PRICE);
+
+        this.oxygenRechargeText.text = LanguageController.Shared.getStoreOxygenTankRechargeText();
+        this.oxygenCapacityText.text = LanguageController.Shared.getStoreOxygenTankCapacityText();
+        this.harpoonText.text = LanguageController.Shared.getStoreHarpoonText();
+        this.flashlightText.text = LanguageController.Shared.getStoreFlashlightText();
+
+        this.oxygenRechargeButtonText.text = LanguageController.Shared.getStoreBuyButtonText();
+        this.oxygenCapacityButtonText.text = LanguageController.Shared.getStoreBuyButtonText();
+        this.harpoonButtonText.text = LanguageController.Shared.getStoreBuyButtonText();
+        this.flashlightButtonText.text = LanguageController.Shared.getStoreBuyButtonText();
+        this.mermaidTailButtonText.text = LanguageController.Shared.getStoreBuyButtonText();
 
         if (this.gameController.hasMermaidTail)
         {
             this.mermaidTailImage.sprite = this.mermaidTailSprite;
-            this.mermaidTailText.text = "Mermaid tail";
+            this.mermaidTailText.text = LanguageController.Shared.getStoreMermaidTaleText();
         }
+
+        this.exitButtonText.text = LanguageController.Shared.getStoreExitButtonText();
 
         this.updateButtonsAvailability();
     }
