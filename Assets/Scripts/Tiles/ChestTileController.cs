@@ -7,8 +7,7 @@ public class ChestTileController : MonoBehaviour, ITile
 
     public bool tileActivated(BoardController parent)
     {
-        // TODO: Show some UI indication that the the player got coins from this tile
-        parent.gameController.updateCoins(1);
+        parent.gameController.updateCoins(10);
         return false;
     }
 }

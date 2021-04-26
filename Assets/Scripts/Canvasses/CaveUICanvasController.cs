@@ -31,7 +31,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             this.image.sprite = this.chestSprite;
             this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.titleText.text = "You found a chest!";
-            this.gameController.updateCoins(5);
+            this.gameController.updateCoins(50);
         }
         else if (random >= 0.2)
         {

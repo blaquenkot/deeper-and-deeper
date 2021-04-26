@@ -37,6 +37,6 @@ public class AtlantisUICanvasController : DestroyableCanvasController
 
     public void OnExitButton()
     {
-        this.removeCanvas(1.5f);
+        this.removeCanvas(0f);
     }
 }

@@ -2,15 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using DG.Tweening;
 
 public class StoreUICanvasController : DestroyableCanvasController
 {
-    public int OXYGEN_PRICE = 5;
-    public int OXYGEN_CAPACITY_PRICE = 15;
-    public int HARPOON_PRICE = 10;
-    public int FLASHLIGHT_PRICE = 15;
-    public int MERMAID_TAIL_PRICE = 50;
+    private int OXYGEN_PRICE = 20;
+    private int OXYGEN_CAPACITY_PRICE = 60;
+    private int HARPOON_PRICE = 70;
+    private int FLASHLIGHT_PRICE = 30;
+    private int MERMAID_TAIL_PRICE = 150;
 
+    public Sprite mermaidTailSprite;
     public TMP_Text oxygenRechargeCostText;
     public TMP_Text oxygenCapacityCostText;
     public TMP_Text harpoonCostText;
@@ -21,6 +23,12 @@ public class StoreUICanvasController : DestroyableCanvasController
     public Button harpoonButton;
     public Button flashlightButton;
     public Button mermaidTailButton;
+    public Image oxygenRechargeImage;
+    public Image oxygenCapacityImage;
+    public Image mermaidTailImage;
+    public Image harpoonImage;
+    public Image flashlightImage;
+    public TMP_Text mermaidTailText;
     public Button exitButton;
 
     public GameController gameController;
@@ -32,6 +40,12 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.harpoonCostText.text = $"({HARPOON_PRICE} coins)";
         this.flashlightCostText.text =  $"({FLASHLIGHT_PRICE} coins)";
         this.mermaidTailCostText.text = $"({MERMAID_TAIL_PRICE} coins)";
+
+        if (this.gameController.hasMermaidTail)
+        {
+            this.mermaidTailImage.sprite = this.mermaidTailSprite;
+            this.mermaidTailText.text = "Mermaid tail";
+        }
 
         this.updateButtonsAvailability();
     }
@@ -68,6 +82,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
+        this.oxygenRechargeImage.transform.DOPunchScale(this.oxygenRechargeImage.transform.localScale * 1.1f, 0.25f);
         this.gameController.spend(OXYGEN_PRICE);
         this.gameController.rechargeOxygen();
         this.updateButtonsAvailability();
@@ -80,6 +95,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
+        this.harpoonImage.transform.DOPunchScale(this.harpoonImage.transform.localScale * 1.1f, 0.25f);
         this.gameController.spend(HARPOON_PRICE);
         this.gameController.giveHarpoon();
         this.updateButtonsAvailability();
@@ -92,6 +108,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
+        this.flashlightImage.transform.DOPunchScale(this.flashlightImage.transform.localScale * 1.1f, 0.25f);
         this.gameController.spend(FLASHLIGHT_PRICE);
         this.gameController.rechargeFlashlight();
         this.updateButtonsAvailability();
@@ -106,6 +123,8 @@ public class StoreUICanvasController : DestroyableCanvasController
 
         this.gameController.spend(MERMAID_TAIL_PRICE);
         this.gameController.giveMermaidTail();
+        this.mermaidTailImage.sprite = this.mermaidTailSprite;
+        this.mermaidTailImage.transform.DOPunchScale(this.mermaidTailImage.transform.localScale * 1.1f, 0.25f);
         this.updateButtonsAvailability();
     }
 
@@ -116,6 +135,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
+        this.oxygenCapacityButton.transform.DOPunchScale(this.oxygenCapacityButton.transform.localScale * 1.1f, 0.25f);
         this.gameController.spend(OXYGEN_CAPACITY_PRICE);
         this.gameController.increaseOxygenCapacity();
         this.gameController.rechargeOxygen();
