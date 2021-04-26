@@ -53,7 +53,6 @@ public class EnemyUICanvasController : DestroyableCanvasController
         if (UnityEngine.Random.value >= 0.35)
         {
             this.titleText.text = LanguageController.Shared.getEnemyEscapeText();
-            this.gameController.updateOxygen(-5);
         }
         else
         {

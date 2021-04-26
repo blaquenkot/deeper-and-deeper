@@ -24,6 +24,11 @@ public class GameController : MonoBehaviour
     public bool hasHarpoon { get; private set; } = false;
     public bool hasMermaidTail { get; private set; } = false;
 
+    void Awake()
+    {
+        Object.FindObjectOfType<SceneManagerController>().currentSceneIndex = 2;
+    }
+
     void Start()
     {
         this.oxygenCapacity = INITIAL_OXYGEN_CAPACITY;
@@ -64,7 +69,7 @@ public class GameController : MonoBehaviour
     public Sequence updateDeepness(int dDeepness)
     {
         this.deepness += dDeepness;
-        this.gameLight.intensity *= 0.9f;
+        this.gameLight.intensity *= 0.99f;
         return this.gameUIController.updateDeepnessAnimated(this.deepness);
     }
 
@@ -145,11 +150,7 @@ public class GameController : MonoBehaviour
     {
         this.flashlights = Mathf.Clamp(this.flashlights - 1, 0, MAX_FLASHLIGHTS);
         this.gameUIController.updateFlashlight(this.flashlights);
-
-        if (this.flashlights == 0)
-        {
-            this.gameUIController.deactivateFlashlight();
-        }
+        this.gameUIController.deactivateFlashlight();
     }
 
     public bool hasFlashlights()
@@ -157,10 +158,16 @@ public class GameController : MonoBehaviour
         return this.flashlights > 0;
     }
 
+    public void enteredAtlantis()
+    {
+        this.boardController.gameFinished();
+        this.gameUIController.gameFinished(true);
+    }
+
     private void playerDied()
     {
         this.boardController.gameFinished();
-        this.gameUIController.gameFinished();
+        this.gameUIController.gameFinished(false);
     }
 
     private float getOxygenPercentage()

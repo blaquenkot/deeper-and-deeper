@@ -1,19 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5582608861928170990
+--- !u!114 &750392646650240983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4179794704530602525}
+  m_GameObject: {fileID: 7020607392311030370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c9e3b8ef3274e7b84db15ea535ef32, type: 3}
+  m_Script: {fileID: 11500000, guid: 73ee1d50c17a16542a3733a026478d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasPrefab: {fileID: 7409085550650006207, guid: d5327bcae8a5b45efaabfab5e478e17c, type: 3}
---- !u!1001 &6072483296904093468
+  coins: 50
+--- !u!1001 &1092795226701092707
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 6078648128009813608, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: FrontTexture
       value: 
-      objectReference: {fileID: 2800000, guid: aa7162d13dd344dc3bc0eb4a90dac7f2, type: 3}
+      objectReference: {fileID: 2800000, guid: 47d190e92c6d04af296c27575fd76f06, type: 3}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -42,11 +42,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.999962
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.008726558
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -66,20 +66,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6359957840942952200, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_Name
-      value: CaveTile
+      value: BigChestTile
       objectReference: {fileID: 0}
     - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_TagString
-      value: caveTilePrefab
+      value: bigChestTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
---- !u!1 &4179794704530602525 stripped
+--- !u!1 &7020607392311030370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
-  m_PrefabInstance: {fileID: 6072483296904093468}
+  m_PrefabInstance: {fileID: 1092795226701092707}
   m_PrefabAsset: {fileID: 0}

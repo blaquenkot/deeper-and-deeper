@@ -2301,7 +2301,10 @@ MonoBehaviour:
   flashlightButton: {fileID: 8453808655944557466}
   flashlightText: {fileID: 5844894903301213409}
   gameOverPanel: {fileID: 4730542184695045238}
+  gameOverText: {fileID: 8815621043795496385}
+  gameOverRetryText: {fileID: 7895623021422102295}
   helpPanel: {fileID: 2885058184310768714}
+  helpButton: {fileID: 6733356205567219175}
   helpText: {fileID: 5584174253907587328}
   helpTitle: {fileID: 6217493232225945673}
   helpCloseText: {fileID: 3840943564334204925}

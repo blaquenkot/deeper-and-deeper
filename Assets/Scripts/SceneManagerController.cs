@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneManagerController: MonoBehaviour
 {
     private Animator Animator;
-    public int CurrentSceneIndex = 0;
+    public int currentSceneIndex = 0;
     
     void Awake()
     {
@@ -12,15 +13,15 @@ public class SceneManagerController: MonoBehaviour
 
     public void GoToNexScene()
     {
-        if(CurrentSceneIndex < 2) // SceneManager.sceneCount)
+        if(this.currentSceneIndex < 2) // SceneManager.sceneCount)
         {
-            CurrentSceneIndex += 1;
+            this.currentSceneIndex += 1;
             Animator.SetTrigger("FadeOut");
         }
     }
 
     public void OnFadeOutFinished()
     {
-        SceneManager.LoadScene(CurrentSceneIndex);
+        SceneManager.LoadScene(this.currentSceneIndex);
     }    
 }

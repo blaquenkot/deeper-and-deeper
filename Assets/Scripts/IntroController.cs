@@ -13,7 +13,7 @@ public class IntroController : MonoBehaviour
     void Awake()
     {
         SceneManagerController = Object.FindObjectOfType<SceneManagerController>();
-        SceneManagerController.CurrentSceneIndex = 0;
+        SceneManagerController.currentSceneIndex = 0;
     }
 
     void Start()

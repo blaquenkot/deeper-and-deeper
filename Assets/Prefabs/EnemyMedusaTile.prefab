@@ -74,6 +74,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyMedusaTile
       objectReference: {fileID: 0}
+    - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_TagString
+      value: enemyMedusaTilePrefab
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
 --- !u!1 &4179794704530602525 stripped

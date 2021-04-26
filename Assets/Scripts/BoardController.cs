@@ -44,7 +44,7 @@ public class BoardController : MonoBehaviour
     {
         if (this.gameController.flashlightActivated)
         {
-            if (selection.canFlip())
+            if (selection.canFlip() && this.canMove)
             {
                 selection.Flip();
                 this.gameController.flashlightUsed();
@@ -68,7 +68,7 @@ public class BoardController : MonoBehaviour
         this.currentTile
             .Flip()
             .OnComplete(() => {
-                this.gameController.updateOxygen(-10);
+                this.gameController.updateOxygen(-5);
 
                 var z = this.currentTile.transform.position.z - 0.75f;
 

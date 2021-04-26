@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - caveTilePrefab
+  - bigChestTilePrefab
+  - chestTilePrefab
+  - lootTilePrefab
+  - enemyMedusaTilePrefab
+  - enemySharkTilePrefab
+  - enemyAnguilaTilePrefab
+  - enemyPiranhaTilePrefab
+  - storeTilePrefab
+  - atlantisTilePrefab
   layers:
   - Default
   - TransparentFX

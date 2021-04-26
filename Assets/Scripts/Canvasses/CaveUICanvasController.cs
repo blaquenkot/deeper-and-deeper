@@ -26,7 +26,7 @@ public class CaveUICanvasController : DestroyableCanvasController
     
     public void OnEnterButton()
     {
-        this.gameController.updateOxygen(-10);
+        this.gameController.updateOxygen(-5);
 
         this.enterButton.gameObject.SetActive(false);
         this.exitButton.gameObject.SetActive(false);

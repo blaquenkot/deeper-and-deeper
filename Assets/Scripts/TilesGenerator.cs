@@ -5,6 +5,7 @@ public class TilesGenerator : MonoBehaviour
     int generation = 0;
 
     public GameObject caveTilePrefab;
+    public GameObject bigChestTilePrefab;
     public GameObject chestTilePrefab;
     public GameObject lootTilePrefab;
     public GameObject enemyMedusaTilePrefab;
@@ -16,12 +17,27 @@ public class TilesGenerator : MonoBehaviour
 
     public GameController gameController;
 
+    void Start()
+    {
+        this.caveTilePrefab.tag = "caveTilePrefab";
+        this.bigChestTilePrefab.tag = "bigChestTilePrefab";
+        this.chestTilePrefab.tag = "chestTilePrefab";
+        this.lootTilePrefab.tag = "lootTilePrefab";
+        this. enemyMedusaTilePrefab.tag = "enemyMedusaTilePrefab";
+        this.enemySharkTilePrefab.tag = "enemySharkTilePrefab";
+        this.enemyAnguilaTilePrefab.tag = "enemyAnguilaTilePrefab";
+        this.enemyPiranhaTilePrefab.tag = "enemyPiranhaTilePrefab";
+        this.storeTilePrefab.tag = "storeTilePrefab";
+        this.atlantisTilePrefab.tag = "atlantisTilePrefab";
+    }
+
     public GameObject[] Next()
     {
-        if (this.generation == 0)
+        if (this.generation <= 4)
         {
+            var tiles = this.getFixedGeneration(this.generation);
             this.generation++;
-            return this.FirstGeneration();
+            return tiles;
         }
 
         this.generation++;
@@ -40,64 +56,107 @@ public class TilesGenerator : MonoBehaviour
         };
     }
 
-    // We want to always start with a treasure
-    private GameObject[] FirstGeneration()
+    private GameObject[] getFixedGeneration(int i)
     {
-        return new GameObject[]
+        if (i == 0)
         {
-            this.chestTilePrefab,
-            this.chestTilePrefab,
-            this.chestTilePrefab
-        };
+            return new GameObject[] { this.chestTilePrefab, this.chestTilePrefab, this.chestTilePrefab };
+        }
+        else if (i == 1)
+        {
+            return new GameObject[] { this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab };
+        }
+        else if (i == 2)
+        {
+            return new GameObject[] { this.lootTilePrefab, this.lootTilePrefab, this.lootTilePrefab };
+        }
+        else if (i == 3)
+        {
+            return new GameObject[] { this.caveTilePrefab, this.caveTilePrefab, this.caveTilePrefab };
+        }
+        else
+        {
+            return new GameObject[] { this.storeTilePrefab, this.storeTilePrefab, this.storeTilePrefab };
+        }
     }
 
     private GameObject getEnemy()
     {
         var random = UnityEngine.Random.value;
-        if (random >= 0.75)
+        var currentTag = this.gameController.boardController.currentTile.tag;
+        if (random >= 0.75 && currentTag != this.enemySharkTilePrefab.tag)
         {
             return this.enemySharkTilePrefab;
         }
-        else if (random >= 0.6)
+        else if (random >= 0.6 && currentTag != this.enemyAnguilaTilePrefab.tag)
         {
             return this.enemyAnguilaTilePrefab;
         }
-        else if (random >= 0.4)
+        else if (random >= 0.4 && currentTag != this.enemyPiranhaTilePrefab.tag)
         {
             return this.enemyPiranhaTilePrefab;
         }
-        else
+        else if (currentTag != this.enemyMedusaTilePrefab.tag)
         {
             return this.enemyMedusaTilePrefab;
         }
+
+        return null;
+    }
+
+    private GameObject getChest()
+    {
+        var random = UnityEngine.Random.value;
+        var currentTag = this.gameController.boardController.currentTile.tag;
+        if (random >= 0.65 && currentTag != this.bigChestTilePrefab.tag)
+        {
+            return this.bigChestTilePrefab;
+        }
+        else if (currentTag != this.chestTilePrefab.tag)
+        {
+            return this.chestTilePrefab;
+        }
+
+        return null;
     }
 
     private GameObject getTile()
     {
         var random = UnityEngine.Random.value;
-        if (random >= 0.75)
+        var currentTag = this.gameController.boardController.currentTile.tag;
+        GameObject tile = null;
+        if (random >= 0.75 && currentTag != this.lootTilePrefab.tag)
         {
-            return this.lootTilePrefab;
+            tile = this.lootTilePrefab;
         }
         else if (random >= 0.6)
         {
-            return this.getEnemy();
+            tile = this.getEnemy();
         }
         else if (random >= 0.5)
         {
-            return this.chestTilePrefab;
+            tile = this.getChest();
         }
-        else if (random >= 0.4)
+        else if (random >= 0.4 && currentTag != this.storeTilePrefab.tag)
         {
-            return this.storeTilePrefab;
+            tile = this.storeTilePrefab;
         }
-        else if (random >= 0.3)
+        else if (this.generation > 10 && random >= 0.3 && currentTag != this.atlantisTilePrefab.tag)
         {
-            return this.atlantisTilePrefab;
+            tile = this.atlantisTilePrefab;
         }
-        else
+        else if (currentTag != this.caveTilePrefab.tag)
         {
-            return this.caveTilePrefab;
+            tile = this.caveTilePrefab;
+        }
+
+        if (tile != null)
+        {
+            return tile;
+        } 
+        else 
+        {
+            return this.getTile();
         }
     }
 }

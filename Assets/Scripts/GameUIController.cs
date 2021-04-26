@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameUIController : MonoBehaviour
 {
@@ -18,21 +19,27 @@ public class GameUIController : MonoBehaviour
     public Button flashlightButton;
     public TMP_Text flashlightText;
     public CanvasRenderer gameOverPanel;
+    public TMP_Text gameOverText;
+    public TMP_Text gameOverRetryText;
     public CanvasRenderer helpPanel;
+    public Button helpButton;
     public TMP_Text helpText;
     public TMP_Text helpTitle;
     public TMP_Text helpCloseText;
 
-    private Color oxygenSliderColor;
+    private Color oxygenSliderColor = new Color();
     private float currentOxygen = 1f;
     private int currentDeepness = 0;
 
     void Start()
     {
-        this.oxygenSliderColor = this.oxygenSliderImage.color;
+        ColorUtility.TryParseHtmlString("#00A1FF", out this.oxygenSliderColor);
+        this.oxygenSliderImage.color = this.oxygenSliderColor;
         this.helpText.text = LanguageController.Shared.getHelpText();
         this.helpTitle.text = LanguageController.Shared.getHelpTitle();
         this.helpCloseText.text = LanguageController.Shared.getHelpCloseButton();
+        this.gameOverText.text = LanguageController.Shared.getGameOver();
+        this.gameOverRetryText.text = LanguageController.Shared.getRetryButtonText();
     }
 
     public void updateOxygen(float oxygen, bool animated = true)
@@ -56,7 +63,7 @@ public class GameUIController : MonoBehaviour
             this.oxygenSlider.value = this.currentOxygen;
         }
 
-        if (this.currentOxygen <= 0.35f)
+        if (oxygen <= 0.35f)
         {
             this.oxygenSliderImage.color = Color.red;
         }
@@ -121,15 +128,27 @@ public class GameUIController : MonoBehaviour
         {
             this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.05f, 0.25f);
         }
+
+        if (count == 3 && this.shouldPlayFlashlightAnimation())
+        {
+            StartCoroutine(this.flashlightAnimation());
+        }
     }
 
     public void activateFlashlight()
     {
         if (this.gameController.hasFlashlights())
         {
-            this.flashlightButton.image.sprite = this.selectedFlashlightSprite;
-            this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.25f);
-            this.gameController.activateFlashlight();
+            if (!this.gameController.flashlightActivated)
+            {
+                this.flashlightButton.image.sprite = this.selectedFlashlightSprite;
+                this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.25f);
+                this.gameController.activateFlashlight();
+            }
+            else
+            {
+                this.deactivateFlashlight();
+            }
         }
     }
 
@@ -139,13 +158,23 @@ public class GameUIController : MonoBehaviour
         this.gameController.deactivateFlashlight();
     }
 
-    public void gameFinished()
+    public void gameFinished(bool won)
     {
+        if (won)
+        {
+            this.gameOverText.text = LanguageController.Shared.getYouWon();
+        }
+        else
+        {
+            this.gameOverText.text = LanguageController.Shared.getGameOver();
+        }
+
         this.oxygenImage.gameObject.SetActive(false);
         this.oxygenSlider.gameObject.SetActive(false);
         this.coinsImage.gameObject.SetActive(false);
         this.coinsText.gameObject.SetActive(false);
         this.flashlightButton.gameObject.SetActive(false);
+        this.helpButton.gameObject.SetActive(false);
         this.gameOverPanel.gameObject.SetActive(true);
     }
 
@@ -164,5 +193,27 @@ public class GameUIController : MonoBehaviour
     {
         this.helpPanel.gameObject.SetActive(false);
         this.gameController.boardController.updateCanMove(true);
+    }
+
+    private IEnumerator flashlightAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (this.shouldPlayFlashlightAnimation()) 
+        {
+            this.flashlightButton
+                .transform
+                .DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.5f).OnComplete(() => {
+                    if (this.shouldPlayFlashlightAnimation())
+                    {
+                        StartCoroutine(this.flashlightAnimation());
+                    }
+                });
+        }
+    }
+
+    private bool shouldPlayFlashlightAnimation()
+    {
+        return !this.gameController.flashlightActivated && this.gameController.flashlights > 0;
     }
 }

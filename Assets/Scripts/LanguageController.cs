@@ -386,4 +386,37 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
 
         return "";
     }
+
+    public string getGameOver() 
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "You died after this big adventure:";
+            case Language.ES: return "Moriste después de esta gran aventura:";
+        }
+
+        return "";
+    }
+
+    public string getYouWon() 
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "You found Atlantis after this big adventure:";
+            case Language.ES: return "Encontraste Atlantis después de esta gran aventura:";
+        }
+
+        return "";
+    }
+
+    public string getRetryButtonText() 
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "Retry";
+            case Language.ES: return "Reintentar";
+        }
+
+        return "";
+    }
 }

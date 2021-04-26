@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ee1d50c17a16542a3733a026478d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasPrefab: {fileID: 0}
+  coins: 10
 --- !u!1001 &1092795226701092707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: m_Name
       value: ChestTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945570484021421313, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_TagString
+      value: chestTilePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
