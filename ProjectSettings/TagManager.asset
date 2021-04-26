@@ -15,6 +15,7 @@ TagManager:
   - storeTilePrefab
   - atlantisTilePrefab
   - enemyStingrayTilePrefab
+  - enemySquidTilePrefab
   layers:
   - Default
   - TransparentFX

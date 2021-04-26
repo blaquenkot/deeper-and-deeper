@@ -63,7 +63,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             this.titleText.text = LanguageController.Shared.getYouDiedText();
         }
 
-        this.removeCanvas(1.5f);
+        this.removeCanvas(3f);
     }
 
     public void OnExitButton()

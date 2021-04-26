@@ -13,6 +13,7 @@ public class TilesGenerator : MonoBehaviour
     public GameObject enemyAnguilaTilePrefab;
     public GameObject enemyPiranhaTilePrefab;
     public GameObject enemyStingrayTilePrefab;
+    public GameObject enemySquidTilePrefab;
     public GameObject storeTilePrefab;
     public GameObject atlantisTilePrefab;
 
@@ -29,6 +30,7 @@ public class TilesGenerator : MonoBehaviour
         this.enemyAnguilaTilePrefab.tag = "enemyAnguilaTilePrefab";
         this.enemyPiranhaTilePrefab.tag = "enemyPiranhaTilePrefab";
         this.enemyStingrayTilePrefab.tag = "enemyStingrayTilePrefab";
+        this.enemySquidTilePrefab.tag = "enemySquidTilePrefab";
         this.storeTilePrefab.tag = "storeTilePrefab";
         this.atlantisTilePrefab.tag = "atlantisTilePrefab";
     }
@@ -86,8 +88,8 @@ public class TilesGenerator : MonoBehaviour
     {
         var random = UnityEngine.Random.value;
         var currentTag = this.gameController.boardController.currentTile.tag;
-        if (random >= 0.9) {
-            return null; // kraken
+        if (random >= 0.85 && currentTag != this.enemySquidTilePrefab.tag) {
+            return this.enemySquidTilePrefab;
         }
         else if (random >= 0.8 && currentTag != this.enemyStingrayTilePrefab.tag)
         {

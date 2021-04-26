@@ -44,7 +44,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
             this.gameController.updateOxygen(-this.damage);
         }
                     
-        this.removeCanvas(1.5f);
+        this.removeCanvas(3f);
     }
 
     public void OnExitButton()
@@ -62,7 +62,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
             this.gameController.updateOxygen(-this.damage);
         }
 
-        this.removeCanvas(1.5f);
+        this.removeCanvas(3f);
     }
 
     public void updateImage(Texture texture)

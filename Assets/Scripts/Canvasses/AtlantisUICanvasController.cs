@@ -51,7 +51,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
             this.subtitleText.text = LanguageController.Shared.getAtlantisNotEnteredText();
             this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.gameController.updateOxygen(-20);
-            this.removeCanvas(1.5f);
+            this.removeCanvas(3f);
         }           
     }
 

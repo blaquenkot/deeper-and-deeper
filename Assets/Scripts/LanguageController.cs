@@ -404,6 +404,10 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
                 {
                     return "Raya";
                 }
+                else if (enemy == "Giant Squid")
+                {
+                    return "Calamar";
+                }
                 else
                 {
                     return enemy;

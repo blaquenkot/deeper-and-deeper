@@ -1101,6 +1101,7 @@ MonoBehaviour:
   enemyAnguilaTilePrefab: {fileID: 4179794704530602525, guid: 115bd947514d24eecb04e011b147321d, type: 3}
   enemyPiranhaTilePrefab: {fileID: 4179794704530602525, guid: 0cdb06448ad7941e4b46b212c2dbe648, type: 3}
   enemyStingrayTilePrefab: {fileID: 4179794704530602525, guid: 96783cbdd890447e98adc1fcac4c4de8, type: 3}
+  enemySquidTilePrefab: {fileID: 4179794704530602525, guid: bbc1b33f4b64a428abb285308ea6dd90, type: 3}
   storeTilePrefab: {fileID: 4179794704530602525, guid: e0cfb2916b1c1c04d9271505eab84e44, type: 3}
   atlantisTilePrefab: {fileID: 7020607392311030370, guid: ab293cef356c94f89acb2ec0760c5482, type: 3}
   gameController: {fileID: 1272719488}
