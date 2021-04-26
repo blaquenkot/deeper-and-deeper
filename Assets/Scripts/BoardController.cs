@@ -69,19 +69,21 @@ public class BoardController : MonoBehaviour
                 this.player
                     .move(this.currentTile.transform.position)
                     .OnComplete(() => {
-                        var tileActivated = false;
-                        foreach(ITile tile in this.currentTile.GetComponents<ITile>())
-                        {
-                            if (tile.tileActivated(this)) {
-                                tileActivated = true;
-                                tile.onTileDeactivated += this.onTileDeactivated;
+                        if (this.gameController.isAlive()) {
+                            var tileActivated = false;
+                            foreach(ITile tile in this.currentTile.GetComponents<ITile>())
+                            {
+                                if (tile.tileActivated(this)) {
+                                    tileActivated = true;
+                                    tile.onTileDeactivated += this.onTileDeactivated;
+                                }
                             }
-                        }
-                        this.moveBackground();
+                            this.moveBackground();
 
-                        if (!tileActivated)
-                        {
-                            this.canMove = true;
+                            if (!tileActivated)
+                            {
+                                this.canMove = true;
+                            }
                         }
                     });
             });
@@ -89,7 +91,9 @@ public class BoardController : MonoBehaviour
 
     void moveBackground()
     {
-        this.background.transform.position = new Vector3(this.player.transform.position.x, this.background.transform.position.y, this.player.transform.position.z);
+        this.background.transform.position = new Vector3(this.player.transform.position.x, 
+                                                        this.background.transform.position.y, 
+                                                        this.player.transform.position.z);
     }
 
     void GenerateNextOptions()

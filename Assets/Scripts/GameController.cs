@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
     public void updateMaxOxygen(int dMaxOxygen)
     {
         this.oxygenCapacity += dMaxOxygen;
+        this.oxygen = this.oxygenCapacity;
         this.gameUIController.updateMaxOxygen(this.oxygenCapacity);
     }
 
@@ -94,6 +95,11 @@ public class GameController : MonoBehaviour
         this.player.updateSprite(this.hasHarpoon, this.hasMermaidTail);
     }
 
+    public bool isAlive()
+    {
+        return this.oxygen >= 0;
+    }
+    
     public bool hasMaxOxygen()
     {
         return this.oxygen >= this.oxygenCapacity;
@@ -113,7 +119,6 @@ public class GameController : MonoBehaviour
     public void increaseOxygenCapacity()
     {
         this.updateMaxOxygen(OXYGEN_CAPACITY_INCREMENTS);
-        this.oxygen = this.oxygenCapacity;
     }
 
     public void rechargeFlashlight()

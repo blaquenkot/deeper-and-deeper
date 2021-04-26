@@ -38,6 +38,9 @@ public class EnemyUICanvasController : DestroyableCanvasController
 
     public void OnExitButton()
     {
+        this.fightButton.gameObject.SetActive(false);
+        this.exitButton.gameObject.SetActive(false);
+
         if (UnityEngine.Random.value >= 0.35)
         {
             this.titleText.text = "You ran away!";
