@@ -27,18 +27,19 @@ public class EnemyUICanvasController : DestroyableCanvasController
         this.fightButton.gameObject.SetActive(false);
         this.exitButton.gameObject.SetActive(false);
 
-        if (UnityEngine.Random.value >= 0.25)
-        {
-            this.titleText.text = LanguageController.Shared.getEnemyLostText();
-            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
-            this.gameController.updateOxygen(-this.damage);
-        }
-        else
+        var winThreshold = this.gameController.hasHarpoon ? 0.2f : 0.8f;
+        if (UnityEngine.Random.value >= winThreshold)
         {
             this.image.sprite = this.chestTexture;
             this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.titleText.text = LanguageController.Shared.getEnemyWonText();
             this.gameController.updateCoins(25);
+        }
+        else
+        {
+            this.titleText.text = LanguageController.Shared.getEnemyLostText();
+            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.gameController.updateOxygen(-this.damage);
         }
                     
         this.removeCanvas(1.5f);
@@ -65,7 +66,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
 
     public void updateImage(Texture texture)
     {
-        this.image.sprite = Sprite.Create((Texture2D)texture, new Rect(0, 0, texture.height, texture.width), new Vector2(0.5f, 0.5f));
+        this.image.sprite = Sprite.Create((Texture2D)texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
         this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
     }
 }
