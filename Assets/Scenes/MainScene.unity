@@ -177,7 +177,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3bb3d590ef90b44c8a6f68a171c60957, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.125
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1077,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameController: {fileID: 1272719488}
   currentTile: {fileID: 691661547}
+  virtualCamera: {fileID: 197935672}
   player: {fileID: 1428247771}
   background: {fileID: 633987594}
 --- !u!114 &1857321777

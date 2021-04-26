@@ -166,6 +166,17 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         return "";
     }
 
+    public string getFinishButtonText()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "Finish";
+            case Language.ES: return "Finalizar";
+        }
+
+        return "";
+    }
+
     public string getEnterText()
     {
         switch (CurrentLanguage) 
@@ -216,6 +227,17 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         {
             case Language.EN: return "You died!";
             case Language.ES: return "Moriste!";
+        }
+
+        return "";
+    }
+
+    public string getEnemyText()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "You found an enemy!";
+            case Language.ES: return "Encontraste un enemigo!";
         }
 
         return "";

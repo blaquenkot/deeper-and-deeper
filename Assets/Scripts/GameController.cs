@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         Object.FindObjectOfType<SceneManagerController>().currentSceneIndex = 2;
+        this.gameLight.intensity = 0.8f;
     }
 
     void Start()

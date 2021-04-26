@@ -18,6 +18,7 @@ public class EnemyUICanvasController : DestroyableCanvasController
 
     void Start()
     {
+        this.titleText.text = LanguageController.Shared.getEnemyText();
         this.fightButtonText.text = LanguageController.Shared.getFightButtonText();
         this.exitButtonText.text = LanguageController.Shared.getGoAwayText();
     }

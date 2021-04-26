@@ -15,12 +15,15 @@ public class AtlantisUICanvasController : DestroyableCanvasController
     public TMP_Text enterButtonText;
     public Button exitButton;
     public TMP_Text exitButtonText;
+    public Button finishButton;
+    public TMP_Text finishButtonText;
     public GameController gameController;
 
     void Start()
     {
         this.subtitleText.text = LanguageController.Shared.getAtlantisFoundText();
         this.enterButtonText.text = LanguageController.Shared.getAtlantisTryToEnterText();
+        this.finishButtonText.text = LanguageController.Shared.getFinishButtonText();
         this.exitButtonText.text = LanguageController.Shared.getGoAwayText();
     }
 
@@ -38,6 +41,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.subtitleText.text = LanguageController.Shared.getAtlantisEnteredText();
             this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.finishButton.gameObject.SetActive(true);
             this.gameController.enteredAtlantis();
         }
         else
@@ -47,9 +51,8 @@ public class AtlantisUICanvasController : DestroyableCanvasController
             this.subtitleText.text = LanguageController.Shared.getAtlantisNotEnteredText();
             this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
             this.gameController.updateOxygen(-20);
-        }
-                    
-        this.removeCanvas(1.5f);
+            this.removeCanvas(1.5f);
+        }           
     }
 
     public void OnExitButton()

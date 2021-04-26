@@ -14,6 +14,7 @@ public class GameUIController : MonoBehaviour
     public Slider oxygenSlider;
     public Image oxygenSliderImage;
     public TMP_Text deepnessText;
+    public TMP_Text deepnessTextFinal;
     public Image coinsImage;
     public TMP_Text coinsText;
     public Button flashlightButton;
@@ -175,6 +176,10 @@ public class GameUIController : MonoBehaviour
         this.coinsText.gameObject.SetActive(false);
         this.flashlightButton.gameObject.SetActive(false);
         this.helpButton.gameObject.SetActive(false);
+        this.deepnessText.gameObject.SetActive(false);
+
+        this.deepnessTextFinal.text = this.deepnessText.text;
+        this.deepnessTextFinal.gameObject.SetActive(true);
         this.gameOverPanel.gameObject.SetActive(true);
     }
 

@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Cinemachine;
 
 public class BoardController : MonoBehaviour
 {
     public GameController gameController;
     public TileController currentTile;
+    public CinemachineVirtualCamera virtualCamera;
     public (TileController, TileController, TileController) currentOptions;
 
     public PlayerController player;
@@ -16,6 +18,8 @@ public class BoardController : MonoBehaviour
 
     void Start()
     {
+        this.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z = -1.5f;
+
         this.tilesGenerator = GetComponent<TilesGenerator>();
 
         this.GenerateNextOptions();
@@ -212,5 +216,11 @@ public class BoardController : MonoBehaviour
         {
             Destroy(this.transform.GetChild(i).gameObject);
         }
+
+        var zPosition = z - 0.75f;
+        this.player.transform.DOMoveZ(zPosition, 3f);
+        this.moveBackground(zPosition);
+
+        this.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z = 2f;
     }
 }
