@@ -2302,6 +2302,7 @@ MonoBehaviour:
   flashlightText: {fileID: 5844894903301213409}
   gameOverPanel: {fileID: 4730542184695045238}
   helpPanel: {fileID: 2885058184310768714}
+  helpText: {fileID: 5584174253907587328}
 --- !u!1 &8724762047840678345
 GameObject:
   m_ObjectHideFlags: 0

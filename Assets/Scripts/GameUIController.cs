@@ -19,6 +19,7 @@ public class GameUIController : MonoBehaviour
     public TMP_Text flashlightText;
     public CanvasRenderer gameOverPanel;
     public CanvasRenderer helpPanel;
+    public TMP_Text helpText;
 
     private Color oxygenSliderColor;
     private float currentOxygen = 1f;
@@ -27,6 +28,7 @@ public class GameUIController : MonoBehaviour
     void Start()
     {
         this.oxygenSliderColor = this.oxygenSliderImage.color;
+        this.helpText.text = LanguageController.Shared.getHelpText();
     }
 
     public void updateOxygen(float oxygen, bool animated = true)
