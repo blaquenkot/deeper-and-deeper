@@ -138,6 +138,8 @@ public class BoardController : MonoBehaviour
                 this.transform
             ).GetComponent<TileController>()
         );
+
+        this.getRandomOption().Flip(false);
     }
 
     void ShiftAndDiscardOptions(TileController selectedTile)
@@ -170,6 +172,23 @@ public class BoardController : MonoBehaviour
     void onTileDeactivated()
     {
         this.canMove = true;
+    }
+
+    TileController getRandomOption()
+    {
+        var random = Random.value;
+        if (random <= 0.33f)
+        {
+            return currentOptions.Item1;
+        }
+        else if (random <= 0.66f)
+        {
+            return currentOptions.Item2;
+        }
+        else
+        {
+            return currentOptions.Item3;
+        }
     }
 
     public void updateCanMove(bool canMove)
