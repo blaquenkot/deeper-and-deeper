@@ -72,6 +72,8 @@ public class BoardController : MonoBehaviour
         this.currentTile
             .Flip()
             .OnComplete(() => {
+                this.currentTile.playSound();
+
                 this.gameController.updateOxygen(-5);
 
                 var z = this.currentTile.transform.position.z - 0.75f;

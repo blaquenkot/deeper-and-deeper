@@ -9,12 +9,16 @@ public class TileController : MonoBehaviour
     public MeshRenderer MiniFrontPlaneRenderer;
     public event Action<TileController> onClick;
 
+    private AudioSource audioSource;
+
     void Start()
     {
         if (this.FrontTexture != null)
         {
             this.FrontPlaneRenderer.material.mainTexture = this.FrontTexture;
         }
+
+        this.audioSource = this.GetComponent<AudioSource>();
     }
 
     void OnMouseDown()
@@ -29,9 +33,15 @@ public class TileController : MonoBehaviour
         return this.transform.localRotation.z != 0;
     }
     
-    public Tween Flip()
+    public Tween Flip(bool animated = true)
     {
-        return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
+        var duration = animated ? 0.5f : 0f;
+        return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), duration);
+    }
+
+    public void playSound()
+    {
+        this.audioSource.Play();
     }
 
     public void addAditionalTile(Texture2D texture)

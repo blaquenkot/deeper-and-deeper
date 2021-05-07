@@ -104,7 +104,7 @@ public class GameController : MonoBehaviour
 
     public bool isAlive()
     {
-        return this.oxygen >= 0;
+        return this.oxygen > 0;
     }
 
     public bool hasMaxOxygen()

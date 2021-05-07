@@ -767,6 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a21124be981694c9ed78f029af3cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldDestroyWhenPlayerDied: 0
   chestSprite: {fileID: 21300000, guid: 47d190e92c6d04af296c27575fd76f06, type: 3}
   caveDeathSprite: {fileID: 21300000, guid: 3a274fa276b454ef28d6e24e4cdfe251, type: 3}
   caveLootSprite: {fileID: 21300000, guid: 9908e30e4c6c340fb9430dfb1ebef660, type: 3}

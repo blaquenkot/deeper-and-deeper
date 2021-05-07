@@ -4,7 +4,23 @@ using System;
 
 public class DestroyableCanvasController : MonoBehaviour
 {
+    public bool shouldDestroyWhenPlayerDied = true;
     public event Action onDestroy;
+
+    private GameController gameController;
+
+    void Awake()
+    {
+        this.gameController = FindObjectOfType<GameController>();
+    }
+
+    void Update()
+    {
+        if (this.shouldDestroyWhenPlayerDied && !this.gameController.isAlive())
+        {
+            this.removeCanvas(0f);
+        }
+    }
 
     internal void removeCanvas(float time)
     {

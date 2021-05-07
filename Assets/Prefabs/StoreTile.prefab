@@ -20,6 +20,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5964970835362705663, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c2600b5351e049a596e9161086c76bb, type: 3}
     - target: {fileID: 6078648128009813608, guid: 8fd6457a6c53045a8a362e9fbd923da9, type: 3}
       propertyPath: FrontTexture
       value: 
