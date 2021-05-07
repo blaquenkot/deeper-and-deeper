@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 7416566116576971212}
   - component: {fileID: 348475379272631003}
   - component: {fileID: 4167176566063763835}
+  - component: {fileID: 3138656235905868572}
   m_Layer: 5
   m_Name: CaveUICanvas
   m_TagString: Untagged
@@ -778,6 +779,18 @@ MonoBehaviour:
   exitButton: {fileID: 6787414297853362573}
   exitButtonText: {fileID: 3736833514609104751}
   gameController: {fileID: 0}
+--- !u!225 &3138656235905868572
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7409085550650006207}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8150905987591829543
 GameObject:
   m_ObjectHideFlags: 0

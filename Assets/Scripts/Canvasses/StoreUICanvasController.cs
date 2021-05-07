@@ -46,8 +46,9 @@ public class StoreUICanvasController : DestroyableCanvasController
     private Color enabledColor = new Color();
     private Color disabledColor = new Color();
 
-    void Start()
+    override public void Start()
     {
+        base.Start();
         ColorUtility.TryParseHtmlString("#BF6DAE", out this.enabledColor);
         ColorUtility.TryParseHtmlString("#664D60", out this.disabledColor);
 

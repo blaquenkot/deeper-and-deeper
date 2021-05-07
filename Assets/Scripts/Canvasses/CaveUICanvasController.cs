@@ -16,8 +16,9 @@ public class CaveUICanvasController : DestroyableCanvasController
     public TMP_Text exitButtonText;
     public GameController gameController;
 
-    void Start()
+    override public void Start()
     {
+        base.Start();
         this.titleText.text = LanguageController.Shared.getCaveFoundText();
         this.enterButtonText.text = LanguageController.Shared.getEnterText();
         this.exitButtonText.text = LanguageController.Shared.getGoAwayText();

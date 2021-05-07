@@ -16,8 +16,9 @@ public class EnemyUICanvasController : DestroyableCanvasController
     public int damage;
     public GameController gameController;
 
-    void Start()
+    override public void Start()
     {
+        base.Start();
         this.titleText.text = LanguageController.Shared.getEnemyText();
         this.fightButtonText.text = LanguageController.Shared.getFightButtonText();
         this.exitButtonText.text = LanguageController.Shared.getGoAwayText();

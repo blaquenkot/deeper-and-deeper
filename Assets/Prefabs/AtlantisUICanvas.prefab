@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 7416566116576971212}
   - component: {fileID: 348475379272631003}
   - component: {fileID: 681391626670209580}
+  - component: {fileID: 791692351126385413}
   m_Layer: 5
   m_Name: AtlantisUICanvas
   m_TagString: Untagged
@@ -1035,6 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0448b3391109a4f50989a5226ac17bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldDestroyWhenPlayerDied: 1
   atlantisEnteredSprite: {fileID: 21300000, guid: dd1113b15c2d4487f95fc86369a82798, type: 3}
   atlantisNotEnteredSprite: {fileID: 21300000, guid: 0fadaf9f1d6f847d49b3d4cd2346a964, type: 3}
   titleText: {fileID: 1959475237438075708}
@@ -1047,6 +1049,18 @@ MonoBehaviour:
   finishButton: {fileID: 7547580053851193898}
   finishButtonText: {fileID: 714146031797120}
   gameController: {fileID: 0}
+--- !u!225 &791692351126385413
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7409085550650006207}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8150905987591829543
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,9 @@ public class AtlantisUICanvasController : DestroyableCanvasController
     public TMP_Text finishButtonText;
     public GameController gameController;
 
-    void Start()
+    override public void Start()
     {
+        base.Start();
         this.subtitleText.text = LanguageController.Shared.getAtlantisFoundText();
         this.enterButtonText.text = LanguageController.Shared.getAtlantisTryToEnterText();
         this.finishButtonText.text = LanguageController.Shared.getFinishButtonText();
