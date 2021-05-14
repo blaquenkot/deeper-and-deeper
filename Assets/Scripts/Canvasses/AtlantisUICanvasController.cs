@@ -33,7 +33,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
         this.enterButton.gameObject.SetActive(false);
         this.exitButton.gameObject.SetActive(false);
 
-        this.titleText.text = "Atlantis!";
+        this.titleText.text = LanguageController.Shared.getAtlantisText();
         this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
 
         if (gameController.hasMermaidTail)

@@ -94,7 +94,7 @@ Podés <b>encontrar tanques de oxígeno</b> en el camino, o <b>comprarlos</b> en
 Explorar <b>cuevas</b> demanda oxígeno, pero podés encontrar <b>tesoros</b> si lo hacés.
 Los <b>enemigos</b> pueden ser atacados, si ganás obtendrás oro. Incrementá tus chances comprando un <b>arma</b>.
 Seleccioná tu <b>linterna</b> para revelar cartas antes de elegir.
-Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ganar el juego!</b>";
+Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para ganar el juego!</b>";
         }
 
         return "";
@@ -111,12 +111,23 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         return "";
     }
 
+    public string getAtlantisText()
+    {
+        switch (CurrentLanguage) 
+        {
+            case Language.EN: return "Atlantis!";
+            case Language.ES: return "¡Atlantis!";
+        }
+
+        return "";
+    }
+
     public string getAtlantisFoundText()
     {
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found a mysterious city!";
-            case Language.ES: return "Encontraste una ciudad misteriosa!";
+            case Language.ES: return "¡Encontraste una ciudad misteriosa!";
         }
 
         return "";
@@ -138,7 +149,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You entered!";
-            case Language.ES: return "Entraste!";
+            case Language.ES: return "¡Entraste!";
         }
 
         return "";
@@ -149,7 +160,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "They attacked you!";
-            case Language.ES: return "Ellos te atacaron!";
+            case Language.ES: return "¡Ellos te atacaron!";
         }
 
         return "";
@@ -160,7 +171,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found a cave!";
-            case Language.ES: return "Encontraste una cueva!";
+            case Language.ES: return "¡Encontraste una cueva!";
         }
 
         return "";
@@ -193,7 +204,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found a treasure!";
-            case Language.ES: return "Encontraste un tesoro!";
+            case Language.ES: return "¡Encontraste un tesoro!";
         }
 
         return "";
@@ -204,7 +215,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found nothing!";
-            case Language.ES: return "No encontraste nada!";
+            case Language.ES: return "¡No encontraste nada!";
         }
 
         return "";
@@ -215,7 +226,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found some oxygen!";
-            case Language.ES: return "Encontraste algo de oxígeno!";
+            case Language.ES: return "¡Encontraste algo de oxígeno!";
         }
 
         return "";
@@ -226,7 +237,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You died!";
-            case Language.ES: return "Moriste!";
+            case Language.ES: return "¡Moriste!";
         }
 
         return "";
@@ -237,7 +248,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You found an enemy!";
-            case Language.ES: return "Encontraste un enemigo!";
+            case Language.ES: return "¡Encontraste un enemigo!";
         }
 
         return "";
@@ -248,7 +259,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "It attacked you and ran away!";
-            case Language.ES: return "Te atacó y escapó!";
+            case Language.ES: return "¡Te atacó y escapó!";
         }
 
         return "";
@@ -259,7 +270,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You won and found a chest!";
-            case Language.ES: return "Ganaste y encontraste un tesoro!";
+            case Language.ES: return "¡Ganaste y encontraste un tesoro!";
         }
 
         return "";
@@ -270,7 +281,7 @@ Sumergite a las profundidades del océano, y <b>lográ entrar a Atlantis para ga
         switch (CurrentLanguage) 
         {
             case Language.EN: return "You ran away!";
-            case Language.ES: return "Escapaste!";
+            case Language.ES: return "¡Escapaste!";
         }
 
         return "";

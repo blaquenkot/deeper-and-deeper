@@ -84,7 +84,7 @@ public class TilesGenerator : MonoBehaviour
         }
     }
 
-    private GameObject getEnemy()
+    public GameObject getEnemy()
     {
         var random = UnityEngine.Random.value;
         var currentTag = this.gameController.boardController.currentTile.tag;

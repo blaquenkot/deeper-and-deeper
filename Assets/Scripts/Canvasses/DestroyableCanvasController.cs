@@ -20,9 +20,7 @@ public class DestroyableCanvasController : MonoBehaviour
 
     public virtual void Start()
     {
-        this.mainCanvasGroup.DOFade(1f, 0.25f).OnComplete(() => {
-            print("ON COMPLETE");
-        });
+        this.mainCanvasGroup.DOFade(1f, 0.25f);
     }
 
     void Update()

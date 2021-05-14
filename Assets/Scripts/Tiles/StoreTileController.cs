@@ -8,7 +8,7 @@ public class StoreTileController : MonoBehaviour, ITile
 
     public bool tileActivated(BoardController parent)
     {
-        StoreUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponents<StoreUICanvasController>()[0];
+        StoreUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponent<StoreUICanvasController>();
         canvas.gameController = parent.gameController;
         canvas.onDestroy += this.OnTileDeactivated;
         return true;

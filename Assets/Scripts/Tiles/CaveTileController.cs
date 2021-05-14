@@ -8,7 +8,7 @@ public class CaveTileController : MonoBehaviour, ITile
 
     public bool tileActivated(BoardController parent)
     {
-        CaveUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponents<CaveUICanvasController>()[0];
+        CaveUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponent<CaveUICanvasController>();
         canvas.gameController = parent.gameController;
         canvas.onDestroy += this.OnTileDeactivated;
         return true;

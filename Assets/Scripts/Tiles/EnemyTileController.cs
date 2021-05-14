@@ -10,12 +10,12 @@ public class EnemyTileController : MonoBehaviour, ITile
 
     public bool tileActivated(BoardController parent)
     {
-        EnemyUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponents<EnemyUICanvasController>()[0];
+        EnemyUICanvasController canvas = Instantiate(this.canvasPrefab, parent.transform.parent).GetComponent<EnemyUICanvasController>();
         canvas.damage = this.damage;
         canvas.gameController = parent.gameController;
         canvas.onDestroy += this.OnTileDeactivated;
         canvas.enemyText.text = LanguageController.Shared.getEnemyName(enemyName);
-        canvas.updateImage(this.GetComponents<TileController>()[0].FrontTexture);
+        canvas.updateImage(this.GetComponent<TileController>().FrontTexture);
         return true;
     }
 
