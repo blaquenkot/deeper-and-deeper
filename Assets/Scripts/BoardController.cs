@@ -126,26 +126,39 @@ public class BoardController : MonoBehaviour
 
         var nextTilesPrefabs = this.tilesGenerator.Next();
 
+        Vector3[] finalPositions = {
+            centerTilePosition + new Vector3(-tileWidth - 0.15f, 0, -tileHeight - 0.15f),
+            centerTilePosition + new Vector3(0, 0, -tileHeight - 0.15f),
+            centerTilePosition + new Vector3(tileWidth + 0.15f, 0, -tileHeight - 0.15f)
+        };
+
+        var originOffset = new Vector3(0f, 0f, 5f);
+
         currentOptions = (
             Instantiate(
                 nextTilesPrefabs[0],
-                centerTilePosition + new Vector3(-tileWidth - 0.15f, 0, -tileHeight - 0.15f),
+                finalPositions[0] - originOffset,
                 newTileRotation,
                 this.transform
             ).GetComponent<TileController>(),
             Instantiate(
                 nextTilesPrefabs[1],
-                centerTilePosition + new Vector3(0, 0, -tileHeight - 0.15f),
+                finalPositions[1] - originOffset,
                 newTileRotation,
                 this.transform
             ).GetComponent<TileController>(),
             Instantiate(
                 nextTilesPrefabs[2],
-                centerTilePosition + new Vector3(tileWidth + 0.15f, 0, -tileHeight - 0.15f),
+                finalPositions[2] - originOffset,
                 newTileRotation,
                 this.transform
             ).GetComponent<TileController>()
         );
+
+        DOTween.Sequence()
+                .Join(currentOptions.Item1.transform.DOLocalMoveZ(finalPositions[0].z, 0.25f))
+                .Join(currentOptions.Item2.transform.DOLocalMoveZ(finalPositions[1].z, 0.25f))
+                .Join(currentOptions.Item3.transform.DOLocalMoveZ(finalPositions[2].z, 0.25f));
 
         this.gameController.gameUIController.updateTutorialText(this.tilesGenerator.getFixedGenerationText());
     }
