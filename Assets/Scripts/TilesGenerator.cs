@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TilesGenerator : MonoBehaviour
@@ -35,7 +36,7 @@ public class TilesGenerator : MonoBehaviour
         this.atlantisTilePrefab.tag = "atlantisTilePrefab";
     }
 
-    public GameObject[] Next()
+    public List<GameObject> Next()
     {
         this.generation++;
 
@@ -50,12 +51,13 @@ public class TilesGenerator : MonoBehaviour
         // * But make everything less likely the deeper it gets
         // * Ensure enough coins before running out of oxygen the first time, and force a store
 
-        return new GameObject[]
-        {
-            this.getTile(),
-            this.getTile(),
-            this.getTile()
-        };
+        var tiles = new List<GameObject>();
+
+        tiles.Add(this.getTile(tiles));
+        tiles.Add(this.getTile(tiles));
+        tiles.Add(this.getTile(tiles));
+
+        return tiles;
     }
 
     public bool isFixedGeneration()
@@ -91,27 +93,27 @@ public class TilesGenerator : MonoBehaviour
         }
     }
 
-    private GameObject[] getFixedGeneration()
+    private List<GameObject> getFixedGeneration()
     {
         if (this.generation == 0)
         {
-            return new GameObject[] { this.chestTilePrefab, this.chestTilePrefab, this.chestTilePrefab };
+            return new List<GameObject> { this.chestTilePrefab, this.chestTilePrefab, this.chestTilePrefab };
         }
         else if (this.generation == 1)
         {
-            return new GameObject[] { this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab };
+            return new List<GameObject> { this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab };
         }
         else if (this.generation == 2)
         {
-            return new GameObject[] { this.lootTilePrefab, this.lootTilePrefab, this.lootTilePrefab };
+            return new List<GameObject> { this.lootTilePrefab, this.lootTilePrefab, this.lootTilePrefab };
         }
         else if (this.generation == 3)
         {
-            return new GameObject[] { this.caveTilePrefab, this.caveTilePrefab, this.caveTilePrefab };
+            return new List<GameObject> { this.caveTilePrefab, this.caveTilePrefab, this.caveTilePrefab };
         }
         else
         {
-            return new GameObject[] { this.storeTilePrefab, this.storeTilePrefab, this.storeTilePrefab };
+            return new List<GameObject> { this.storeTilePrefab, this.storeTilePrefab, this.storeTilePrefab };
         }
     }
 
@@ -162,7 +164,7 @@ public class TilesGenerator : MonoBehaviour
         return null;
     }
 
-    private GameObject getTile()
+    private GameObject getTile(List<GameObject> currentTiles)
     {
         var random = UnityEngine.Random.value;
         var currentTag = this.gameController.boardController.currentTile.tag;
@@ -194,11 +196,19 @@ public class TilesGenerator : MonoBehaviour
 
         if (tile != null)
         {
+            foreach(GameObject currentTile in currentTiles)
+            {
+                if(tile.tag == currentTile.tag)
+                {
+                    return this.getTile(currentTiles);
+                }
+            }
+
             return tile;
         } 
         else 
         {
-            return this.getTile();
+            return this.getTile(currentTiles);
         }
     }
 }
