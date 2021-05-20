@@ -33,13 +33,13 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickES()
     {
-        LanguageController.CurrentLanguage = LanguageController.Language.ES;
+        LanguageController.currentLanguage = LanguageController.Language.ES;
         this.reloadTexts();
     }
 
     public void OnClickEN()
     {
-        LanguageController.CurrentLanguage = LanguageController.Language.EN;
+        LanguageController.currentLanguage = LanguageController.Language.EN;
         this.reloadTexts();
     }
 

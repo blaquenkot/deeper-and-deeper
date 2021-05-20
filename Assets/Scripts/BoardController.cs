@@ -15,6 +15,7 @@ public class BoardController : MonoBehaviour
 
     private TilesGenerator tilesGenerator;
     private bool canMove = true;
+    private bool tutorialShopAppeared = false;
 
     void Start()
     {
@@ -96,6 +97,11 @@ public class BoardController : MonoBehaviour
                             if (!tileActivated)
                             {
                                 this.canMove = true;
+
+                                if (this.tutorialShopAppeared)
+                                {
+                                    this.getRandomOption().Flip();
+                                }
                             }
                         }
                     });
@@ -141,7 +147,7 @@ public class BoardController : MonoBehaviour
             ).GetComponent<TileController>()
         );
 
-        this.getRandomOption().Flip(false);
+        this.gameController.gameUIController.updateTutorialText(this.tilesGenerator.getFixedGenerationText());
     }
 
     void ShiftAndDiscardOptions(TileController selectedTile)
@@ -173,23 +179,62 @@ public class BoardController : MonoBehaviour
 
     void onTileDeactivated()
     {
-        this.canMove = true;
+        var needsFlipping = false;
+
+        if (this.tutorialShopAppeared && this.allTilesAreFaceDown())
+        {
+            needsFlipping = true;
+            this.getRandomOption().Flip().OnComplete(() => {
+                this.canMove = true;
+            });
+        }
+
+        if (!needsFlipping)
+        {
+            this.canMove = true;
+        }
+    }
+
+    bool allTilesAreFaceDown()
+    {
+        return this.currentOptions.Item1.canFlip() && 
+                this.currentOptions.Item2.canFlip() && 
+                this.currentOptions.Item3.canFlip();
     }
 
     TileController getRandomOption()
     {
         var random = Random.value;
+        TileController option = null;
         if (random <= 0.33f)
         {
-            return currentOptions.Item1;
+            option = currentOptions.Item1;
         }
         else if (random <= 0.66f)
         {
-            return currentOptions.Item2;
+            option = currentOptions.Item2;
         }
         else
         {
-            return currentOptions.Item3;
+            option = currentOptions.Item3;
+        }
+
+        if (option.tag != "atlantisTilePrefab")
+        {
+            return option;
+        }
+        else
+        {
+            return this.getRandomOption();
+        }
+    }
+
+    public void onStoreTileDeactivated()
+    {
+        if (!this.tutorialShopAppeared)
+        {
+            this.tutorialShopAppeared = true;
+            this.gameController.gameUIController.infoText.text = LanguageController.Shared.getTutorialFinalStep();
         }
     }
 

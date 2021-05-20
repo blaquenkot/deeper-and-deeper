@@ -29,24 +29,11 @@ class LanguageController : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    public Language CurrentLanguage = Language.EN;
-
-    public string getIntroText()
-    {
-        switch (CurrentLanguage) 
-        {
-            case Language.EN: return 
-@"INTRO";
-            case Language.ES: return 
-@"INTRO";
-        }
-
-        return "";
-    }
+    public Language currentLanguage = Language.EN;
 
     public string getStartButtonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Start";
             case Language.ES: return "Comenzar";
@@ -57,7 +44,7 @@ class LanguageController : MonoBehaviour {
 
     public string getHelpTitle()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Help";
             case Language.ES: return "Ayuda";
@@ -68,7 +55,7 @@ class LanguageController : MonoBehaviour {
 
     public string getHelpCloseButton()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Close";
             case Language.ES: return "Cerrar";
@@ -79,7 +66,7 @@ class LanguageController : MonoBehaviour {
 
     public string getHelpText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return 
 @"If you run out of <b>oxygen</b>, the game is over.
@@ -102,7 +89,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getGoAwayText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Go away";
             case Language.ES: return "Irse";
@@ -113,7 +100,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getAtlantisText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Atlantis!";
             case Language.ES: return "¡Atlantis!";
@@ -124,7 +111,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getAtlantisFoundText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found a mysterious city!";
             case Language.ES: return "¡Encontraste una ciudad misteriosa!";
@@ -135,7 +122,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getAtlantisTryToEnterText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Try to enter";
             case Language.ES: return "Tratar de entrar";
@@ -146,7 +133,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getAtlantisEnteredText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You entered!";
             case Language.ES: return "¡Entraste!";
@@ -157,7 +144,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getAtlantisNotEnteredText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "They attacked you!";
             case Language.ES: return "¡Ellos te atacaron!";
@@ -168,7 +155,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getCaveFoundText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found a cave!";
             case Language.ES: return "¡Encontraste una cueva!";
@@ -179,7 +166,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getFinishButtonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Finish";
             case Language.ES: return "Finalizar";
@@ -190,7 +177,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnterText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Enter";
             case Language.ES: return "Entrar";
@@ -201,7 +188,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getChestFoundText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found a treasure!";
             case Language.ES: return "¡Encontraste un tesoro!";
@@ -212,7 +199,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getNothingFoundText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found nothing!";
             case Language.ES: return "¡No encontraste nada!";
@@ -223,7 +210,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getLootFoundText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found some oxygen!";
             case Language.ES: return "¡Encontraste algo de oxígeno!";
@@ -234,7 +221,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getYouDiedText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You died!";
             case Language.ES: return "¡Moriste!";
@@ -245,7 +232,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnemyText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found an enemy!";
             case Language.ES: return "¡Encontraste un enemigo!";
@@ -256,7 +243,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnemyLostText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "It attacked you and ran away!";
             case Language.ES: return "¡Te atacó y escapó!";
@@ -267,7 +254,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnemyWonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You won and found a chest!";
             case Language.ES: return "¡Ganaste y encontraste un tesoro!";
@@ -278,7 +265,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnemyEscapeText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You ran away!";
             case Language.ES: return "¡Escapaste!";
@@ -289,7 +276,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getFightButtonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Fight";
             case Language.ES: return "Pelear";
@@ -300,7 +287,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreCoinsText(int coins) 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return $"({coins} coins)";
             case Language.ES: return $"({coins} monedas)";
@@ -311,7 +298,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreOxygenTankRechargeText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Tank recharge";
             case Language.ES: return "Cargar tanque";
@@ -322,7 +309,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreOxygenTankCapacityText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Tank capacity";
             case Language.ES: return "Sumar capacidad";
@@ -333,7 +320,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreHarpoonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Harpoon";
             case Language.ES: return "Arpón";
@@ -344,7 +331,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreFlashlightText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Flashlight";
             case Language.ES: return "Linterna";
@@ -355,7 +342,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreMermaidTaleText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Mermaid tail";
             case Language.ES: return "Cola de sirena";
@@ -366,7 +353,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreBuyButtonText()
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Buy";
             case Language.ES: return "Comprar";
@@ -377,7 +364,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getStoreExitButtonText() 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Exit";
             case Language.ES: return "Salir";
@@ -388,7 +375,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getDeepnessText(int deepness) 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return deepness + " METERS";
             case Language.ES: return deepness + " METROS";
@@ -399,7 +386,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getEnemyName(string enemy) 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return enemy;
             case Language.ES: 
@@ -430,7 +417,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getGameOver() 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You died after this big adventure:";
             case Language.ES: return "Moriste después de esta gran aventura:";
@@ -441,7 +428,7 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getYouWon() 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "You found Atlantis after this big adventure:";
             case Language.ES: return "Encontraste Atlantis después de esta gran aventura:";
@@ -452,10 +439,75 @@ Sumergite a las profundidades del océano, y <b>¡lográ entrar a Atlantis para 
 
     public string getRetryButtonText() 
     {
-        switch (CurrentLanguage) 
+        switch (this.currentLanguage) 
         {
             case Language.EN: return "Retry";
             case Language.ES: return "Reintentar";
+        }
+
+        return "";
+    }
+    public string getTutorialChest() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "This journey offers treasures";
+            case Language.ES: return "Este viaje ofrece tesoros";
+        }
+
+        return "";
+    }
+
+    public string getTutorialEnemy() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "This journey offers challenges";
+            case Language.ES: return "Este viaje ofrece desafíos";
+        }
+
+        return "";
+    }
+
+    public string getTutorialLoot() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "This journey offers gifts";
+            case Language.ES: return "Este viaje ofrece regalos";
+        }
+
+        return "";
+    }
+
+    public string getTutorialCave() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "This journey offers mistery";
+            case Language.ES: return "Este viaje ofrece misterios";
+        }
+
+        return "";
+    }
+
+    public string getTutorialShop() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "This journey offers good deals!";
+            case Language.ES: return "Este viaje ofrece buenas ofertas!";
+        }
+
+        return "";
+    }
+
+    public string getTutorialFinalStep() 
+    {
+        switch (this.currentLanguage) 
+        {
+            case Language.EN: return "And some help to decide!";
+            case Language.ES: return "Y algo de ayuda para elegir!";
         }
 
         return "";

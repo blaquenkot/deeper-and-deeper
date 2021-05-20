@@ -34,14 +34,14 @@ public class EnemyUICanvasController : DestroyableCanvasController
         {
             this.image.sprite = this.chestTexture;
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
-            this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.titleText.text = LanguageController.Shared.getEnemyWonText();
             this.gameController.updateCoins(25);
         }
         else
         {
             this.titleText.text = LanguageController.Shared.getEnemyLostText();
-            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.gameController.updateOxygen(-this.damage);
         }
                     
@@ -69,6 +69,6 @@ public class EnemyUICanvasController : DestroyableCanvasController
     public void updateImage(Texture texture)
     {
         this.image.sprite = Sprite.Create((Texture2D)texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+        this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
     }
 }

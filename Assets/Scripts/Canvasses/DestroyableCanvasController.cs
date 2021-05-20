@@ -10,6 +10,7 @@ public class DestroyableCanvasController : MonoBehaviour
 
     private CanvasGroup mainCanvasGroup;
     private GameController gameController;
+    private bool canBeDestroyed = false;
 
     void Awake()
     {
@@ -25,7 +26,7 @@ public class DestroyableCanvasController : MonoBehaviour
 
     void Update()
     {
-        if (this.shouldDestroyWhenPlayerDied && !this.gameController.isAlive())
+        if ((this.shouldDestroyWhenPlayerDied && !this.gameController.isAlive()) || (this.canBeDestroyed && Input.GetMouseButtonDown(0)))
         {
             this.removeCanvas(0f);
         }
@@ -33,6 +34,7 @@ public class DestroyableCanvasController : MonoBehaviour
 
     internal void removeCanvas(float time)
     {
+        this.canBeDestroyed = true;
         StartCoroutine(this.destroyCanvas(time));
     }
 

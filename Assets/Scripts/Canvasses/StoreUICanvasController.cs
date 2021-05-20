@@ -112,7 +112,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
-        this.oxygenRechargeImage.transform.DOPunchScale(this.oxygenRechargeImage.transform.localScale * 1.1f, 0.25f);
+        this.oxygenRechargeImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
         this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenRechargeImage.mainTexture);
         this.gameController.spend(OXYGEN_PRICE);
         this.gameController.rechargeOxygen();
@@ -126,7 +126,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
-        this.harpoonImage.transform.DOPunchScale(this.harpoonImage.transform.localScale * 1.1f, 0.25f);
+        this.harpoonImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
         this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.harpoonImage.mainTexture);
         this.gameController.spend(HARPOON_PRICE);
         this.gameController.giveHarpoon();
@@ -140,7 +140,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
-        this.flashlightImage.transform.DOPunchScale(this.flashlightImage.transform.localScale * 1.1f, 0.25f);
+        this.flashlightImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
         this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.flashlightImage.mainTexture);
         this.gameController.spend(FLASHLIGHT_PRICE);
         this.gameController.rechargeFlashlight();
@@ -157,7 +157,7 @@ public class StoreUICanvasController : DestroyableCanvasController
         this.gameController.spend(MERMAID_TAIL_PRICE);
         this.gameController.giveMermaidTail();
         this.mermaidTailImage.sprite = this.mermaidTailSprite;
-        this.mermaidTailImage.transform.DOPunchScale(this.mermaidTailImage.transform.localScale * 1.1f, 0.25f);
+        this.mermaidTailImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
         this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.mermaidTailImage.mainTexture);
         this.updateButtonsAvailability();
     }
@@ -169,7 +169,7 @@ public class StoreUICanvasController : DestroyableCanvasController
             return;
         }
 
-        this.oxygenCapacityImage.transform.DOPunchScale(this.oxygenCapacityImage.transform.localScale * 1.1f, 0.25f);
+        this.oxygenCapacityImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
         this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.oxygenCapacityImage.mainTexture);
         this.gameController.spend(OXYGEN_CAPACITY_PRICE);
         this.gameController.increaseOxygenCapacity();

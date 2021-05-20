@@ -24,7 +24,7 @@ public class CaveUICanvasController : DestroyableCanvasController
         this.titleText.text = LanguageController.Shared.getCaveFoundText();
         this.enterButtonText.text = LanguageController.Shared.getEnterText();
         this.exitButtonText.text = LanguageController.Shared.getGoAwayText();
-        this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+        this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
     }
     
     public void OnEnterButton()
@@ -76,7 +76,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             {
                 this.image.sprite = this.chestSprite;
                 this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
-                this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
                 this.titleText.text = LanguageController.Shared.getChestFoundText();
                 this.gameController.updateCoins(50);
             }
@@ -84,9 +84,9 @@ public class CaveUICanvasController : DestroyableCanvasController
             {
                 this.image.sprite = this.caveLootSprite;
                 this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
-                this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
                 this.titleText.text = LanguageController.Shared.getLootFoundText();
-                this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             }
             else if (random >= 0.1)
             {
@@ -106,15 +106,15 @@ public class CaveUICanvasController : DestroyableCanvasController
                 var texture = (Texture2D) enemy.GetComponent<TileController>().FrontTexture;
                 this.image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
                 this.gameController.boardController.updateCurrentTileMiniTile(texture);
-                this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
 
                 this.titleText.text = LanguageController.Shared.getEnemyName(this.enemy.enemyName).ToUpper() + "\n" + LanguageController.Shared.getEnemyText();
-                this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             }
             else
             {
                 this.titleText.text = LanguageController.Shared.getNothingFoundText();
-                this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+                this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             }
         }
         else
@@ -141,14 +141,14 @@ public class CaveUICanvasController : DestroyableCanvasController
         {
             this.image.sprite = this.chestSprite;
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
-            this.image.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.titleText.text = LanguageController.Shared.getEnemyWonText();
             this.gameController.updateCoins(25);
         }
         else
         {
             this.titleText.text = LanguageController.Shared.getEnemyLostText();
-            this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.gameController.updateOxygen(-this.enemy.damage);
         }
 

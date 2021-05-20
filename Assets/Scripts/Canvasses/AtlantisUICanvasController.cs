@@ -34,14 +34,14 @@ public class AtlantisUICanvasController : DestroyableCanvasController
         this.exitButton.gameObject.SetActive(false);
 
         this.titleText.text = LanguageController.Shared.getAtlantisText();
-        this.titleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+        this.titleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
 
         if (gameController.hasMermaidTail)
         {
             this.image.sprite = this.atlantisEnteredSprite;
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.subtitleText.text = LanguageController.Shared.getAtlantisEnteredText();
-            this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.subtitleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.finishButton.gameObject.SetActive(true);
             this.gameController.enteredAtlantis();
         }
@@ -50,7 +50,7 @@ public class AtlantisUICanvasController : DestroyableCanvasController
             this.image.sprite = this.atlantisNotEnteredSprite;
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.subtitleText.text = LanguageController.Shared.getAtlantisNotEnteredText();
-            this.subtitleText.transform.DOPunchScale(Vector3.one * 1.05f, 0.5f);
+            this.subtitleText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.gameController.updateOxygen(-20);
             this.removeCanvas(3f);
         }           

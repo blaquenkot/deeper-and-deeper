@@ -33,10 +33,9 @@ public class TileController : MonoBehaviour
         return this.transform.localRotation.z != 0;
     }
     
-    public Tween Flip(bool animated = true)
+    public Tween Flip()
     {
-        var duration = animated ? 0.5f : 0f;
-        return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), duration);
+        return this.transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 0.5f);
     }
 
     public void playSound()

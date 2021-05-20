@@ -27,10 +27,12 @@ public class GameUIController : MonoBehaviour
     public TMP_Text helpText;
     public TMP_Text helpTitle;
     public TMP_Text helpCloseText;
+    public TMP_Text infoText;
 
     private Color oxygenSliderColor = new Color();
     private float currentOxygen = 1f;
     private int currentDeepness = 0;
+    private bool isAnimatingFlashlight = false;
 
     void Start()
     {
@@ -49,7 +51,7 @@ public class GameUIController : MonoBehaviour
         {
             if (oxygen > this.currentOxygen)
             {
-                this.oxygenImage.transform.DOPunchScale(this.oxygenImage.transform.localScale * 1.05f, 0.25f);
+                this.oxygenImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f);
             }
 
             DOTween
@@ -83,7 +85,7 @@ public class GameUIController : MonoBehaviour
 
         var x = Mathf.Clamp(this.oxygenSlider.transform.localScale.x + 0.25f, 1f, 2.7f);
         DOTween.Sequence()
-                .Join(this.oxygenImage.transform.DOPunchScale(this.oxygenImage.transform.localScale * 1.05f, 0.25f))
+                .Join(this.oxygenImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f))
                 .Join(this.oxygenSlider.transform.DOScaleX(x, 0.25f))
                 .Play();
     }
@@ -108,14 +110,14 @@ public class GameUIController : MonoBehaviour
                 .OnUpdate(() => {
                     this.deepnessText.text = LanguageController.Shared.getDeepnessText(this.currentDeepness);
                 }))
-            .Join(this.deepnessText.transform.DOPunchScale(this.deepnessText.transform.localScale * 1.1f, 0.25f));
+            .Join(this.deepnessText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f));
     }
 
     public void updateCoins(int coins, bool animated = true)
     {
         if (animated && coins > int.Parse(this.coinsText.text))
         {
-            this.coinsImage.transform.DOPunchScale(this.coinsImage.transform.localScale * 1.05f, 0.25f);
+            this.coinsImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f);
         }
 
         this.coinsText.text = coins.ToString();
@@ -125,14 +127,13 @@ public class GameUIController : MonoBehaviour
     {
         this.flashlightText.text = count.ToString();
 
-        if (animated)
-        {
-            this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.05f, 0.25f);
-        }
-
         if (count == 3 && this.shouldPlayFlashlightAnimation())
         {
-            StartCoroutine(this.flashlightAnimation());
+            this.flashlightAnimation();
+        }
+        else if (animated)
+        {
+            this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f);
         }
     }
 
@@ -143,7 +144,7 @@ public class GameUIController : MonoBehaviour
             if (!this.gameController.flashlightActivated)
             {
                 this.flashlightButton.image.sprite = this.selectedFlashlightSprite;
-                this.flashlightButton.transform.DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.25f);
+                this.flashlightButton.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
                 this.gameController.activateFlashlight();
             }
             else
@@ -200,19 +201,34 @@ public class GameUIController : MonoBehaviour
         this.gameController.boardController.updateCanMove(true);
     }
 
-    private IEnumerator flashlightAnimation()
+    public void updateTutorialText(string text) 
     {
-        yield return new WaitForSeconds(0.5f);
-
-        if (this.shouldPlayFlashlightAnimation()) 
+        if (this.infoText.text != text)
         {
-            this.flashlightButton
-                .transform
-                .DOPunchScale(this.flashlightButton.transform.localScale * 1.1f, 0.5f).OnComplete(() => {
-                    if (this.shouldPlayFlashlightAnimation())
-                    {
-                        StartCoroutine(this.flashlightAnimation());
-                    }
+            this.infoText.text = text;
+
+            DOTween.Sequence()
+                    .AppendInterval(0.25f)
+                    .Append(this.infoText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.15f, 0.3f))
+                    .AppendInterval(0.15f)
+                    .Append(this.infoText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.15f, 0.3f));
+        }
+    }
+
+    private void flashlightAnimation()
+    {
+        if (this.shouldPlayFlashlightAnimation() && !this.isAnimatingFlashlight) 
+        {
+            this.isAnimatingFlashlight = true;
+            DOTween.Sequence()
+                    .Append(this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.5f))
+                    .AppendInterval(0.5f)
+                    .OnComplete(() => {
+                        this.isAnimatingFlashlight = false;
+                        if (this.shouldPlayFlashlightAnimation())
+                        {
+                            this.flashlightAnimation();
+                        }
                 });
         }
     }

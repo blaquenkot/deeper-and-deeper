@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TilesGenerator : MonoBehaviour
 {
-    int generation = 0;
+    private int generation = -1;
 
     public GameObject caveTilePrefab;
     public GameObject bigChestTilePrefab;
@@ -37,14 +37,12 @@ public class TilesGenerator : MonoBehaviour
 
     public GameObject[] Next()
     {
-        if (this.generation <= 4)
-        {
-            var tiles = this.getFixedGeneration(this.generation);
-            this.generation++;
-            return tiles;
-        }
-
         this.generation++;
+
+        if (this.isFixedGeneration())
+        {
+            return this.getFixedGeneration();
+        }
 
         // Ideas:
         // * If almost out of O2, and with enough coin, make it more likely to find a store
@@ -60,21 +58,54 @@ public class TilesGenerator : MonoBehaviour
         };
     }
 
-    private GameObject[] getFixedGeneration(int i)
+    public bool isFixedGeneration()
     {
-        if (i == 0)
+        return this.generation <= 4;
+    }
+
+    public string getFixedGenerationText()
+    {
+        if (this.generation == 1)
+        {
+            return LanguageController.Shared.getTutorialChest();
+        }
+        else if (this.generation == 2)
+        {
+            return LanguageController.Shared.getTutorialEnemy();
+        }
+        else if (this.generation == 3)
+        {
+            return LanguageController.Shared.getTutorialLoot();
+        }
+        else if (this.generation == 4)
+        {
+            return LanguageController.Shared.getTutorialCave();
+        }
+        else if (this.generation == 5)
+        {
+            return LanguageController.Shared.getTutorialShop();
+        }
+        else
+        {
+            return "";
+        }
+    }
+
+    private GameObject[] getFixedGeneration()
+    {
+        if (this.generation == 0)
         {
             return new GameObject[] { this.chestTilePrefab, this.chestTilePrefab, this.chestTilePrefab };
         }
-        else if (i == 1)
+        else if (this.generation == 1)
         {
             return new GameObject[] { this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab, this.enemyMedusaTilePrefab };
         }
-        else if (i == 2)
+        else if (this.generation == 2)
         {
             return new GameObject[] { this.lootTilePrefab, this.lootTilePrefab, this.lootTilePrefab };
         }
-        else if (i == 3)
+        else if (this.generation == 3)
         {
             return new GameObject[] { this.caveTilePrefab, this.caveTilePrefab, this.caveTilePrefab };
         }

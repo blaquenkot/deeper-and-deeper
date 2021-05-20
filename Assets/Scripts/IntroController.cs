@@ -18,7 +18,7 @@ public class IntroController : MonoBehaviour
 
     void Start()
     {
-        this.image.transform.DOPunchScale(this.image.transform.localScale * 1.05f, 0.5f);
+        this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
     }
 
     void Update()
