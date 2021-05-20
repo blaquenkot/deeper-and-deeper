@@ -117,7 +117,9 @@ public class GameUIController : MonoBehaviour
     {
         if (animated && coins > int.Parse(this.coinsText.text))
         {
-            this.coinsImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f);
+            DOTween.Sequence()
+                    .Join(this.coinsImage.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f))
+                    .Join(this.coinsText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.25f));
         }
 
         this.coinsText.text = coins.ToString();
@@ -133,7 +135,9 @@ public class GameUIController : MonoBehaviour
         }
         else if (animated)
         {
-            this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f);
+            DOTween.Sequence()
+                .Join(this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f))
+                .Join(this.flashlightText.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f));
         }
     }
 
@@ -144,7 +148,11 @@ public class GameUIController : MonoBehaviour
             if (!this.gameController.flashlightActivated)
             {
                 this.flashlightButton.image.sprite = this.selectedFlashlightSprite;
-                this.flashlightButton.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.1f, 0.25f);
+
+                DOTween.Sequence()
+                    .Join(this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f))
+                    .Join(this.flashlightText.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f));
+
                 this.gameController.activateFlashlight();
             }
             else
@@ -157,6 +165,8 @@ public class GameUIController : MonoBehaviour
     public void deactivateFlashlight()
     {
         this.flashlightButton.image.sprite = this.flashlightSprite;
+        this.flashlightButton.transform.localScale = Vector3.one * 0.15f;
+        this.flashlightText.transform.localScale = Vector3.one;
         this.gameController.deactivateFlashlight();
     }
 
@@ -219,7 +229,8 @@ public class GameUIController : MonoBehaviour
         {
             this.isAnimatingFlashlight = true;
             DOTween.Sequence()
-                    .Append(this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.5f))
+                    .Join(this.flashlightButton.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f))
+                    .Join(this.flashlightText.transform.DOPunchScale(Vector3.one * 0.3f, 0.25f))
                     .AppendInterval(0.5f)
                     .OnComplete(() => {
                         this.isAnimatingFlashlight = false;

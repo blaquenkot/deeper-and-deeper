@@ -143,7 +143,7 @@ public class CaveUICanvasController : DestroyableCanvasController
             this.gameController.boardController.updateCurrentTileMiniTile((Texture2D)this.image.mainTexture);
             this.image.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.05f, 0.5f);
             this.titleText.text = LanguageController.Shared.getEnemyWonText();
-            this.gameController.updateCoins(25);
+            this.gameController.updateCoins(50);
         }
         else
         {
