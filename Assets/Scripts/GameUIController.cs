@@ -209,8 +209,6 @@ public class GameUIController : MonoBehaviour
 
             DOTween.Sequence()
                     .AppendInterval(0.25f)
-                    .Append(this.infoText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.15f, 0.3f))
-                    .AppendInterval(0.15f)
                     .Append(this.infoText.transform.DOPunchScale(new Vector3(1f, 1f, 0f) * 1.15f, 0.3f));
         }
     }
